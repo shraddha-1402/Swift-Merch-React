@@ -1,8 +1,18 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import logo from "./logo.png";
+import { Navbar } from "./components";
+import { routes } from "./constants";
+import { HomePage } from "./pages/";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route element={<HomePage />} path={routes.HOME_PAGE} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
