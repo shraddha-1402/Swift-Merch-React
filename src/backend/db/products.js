@@ -1,30 +1,88 @@
 import { v4 as uuid } from "uuid";
-
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
+import hoodie1 from "../../assets/products/hoodies/hoodie1.png";
+import hoodie2 from "../../assets/products/hoodies/hoodie2.png";
+import hoodie3 from "../../assets/products/hoodies/hoodie3.png";
+import hoodie4 from "../../assets/products/hoodies/hoodie4.png";
+import hoodie5 from "../../assets/products/hoodies/hoodie5.png";
+import hoodie6 from "../../assets/products/hoodies/hoodie6.png";
 
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    img: hoodie1,
+    name: "Stark Hoodie",
+    price: 200,
+    mrp: 350,
+    category: "clothes",
+    album: "Red",
+    rating: 5,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
+    img: hoodie2,
+    name: "Stark Hoodie",
+    price: 300,
+    mrp: 400,
+    category: "accessories",
+    album: "1989",
+    rating: 4,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    img: hoodie3,
+    name: "Stark Hoodie",
+    price: 400,
+    mrp: 500,
+    category: "Music",
+    album: "Fearless",
+    rating: 3,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
+  },
+  {
+    _id: uuid(),
+    img: hoodie4,
+    name: "Stark Hoodie",
+    price: 300,
+    mrp: 500,
+    category: "mobile-covers",
+    album: "Lover",
+    rating: 4,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
+  },
+  {
+    _id: uuid(),
+    img: hoodie5,
+    name: "Stark Hoodie",
+    price: 700,
+    mrp: 900,
+    category: "clothes",
+    album: "Reputation",
+    rating: 2,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
+  },
+  {
+    _id: uuid(),
+    img: hoodie6,
+    name: "Stark Hoodie",
+    price: 800,
+    mrp: 1000,
+    category: "Music",
+    album: "Red",
+    rating: 5,
+    inWishlist: false,
+    inCart: false,
+    cartQuantity: 1,
   },
 ];
