@@ -5,9 +5,12 @@ import {
   fearlessHeroImg,
   redHeroImg,
 } from "../../assets/index";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants";
 const carouselImages = [evermoreHeroImg, fearlessHeroImg, redHeroImg];
 
 const Header = () => {
+  const navigate = useNavigate();
   const [carousalImgIdx, setCarousalImgIdx] = useState(0);
 
   const changeCarousalImg = () => {
@@ -45,7 +48,9 @@ const Header = () => {
         <h1 className="hero-heading">The Best Taylor&apos;s Merch Is Here</h1>
         <button
           className="btn btn-solid-primary mt-1"
-          onClick={() => {}}
+          onClick={() => {
+            navigate(routes.PRODUCTS_PAGE);
+          }}
         >
           SHOP NOW
         </button>
