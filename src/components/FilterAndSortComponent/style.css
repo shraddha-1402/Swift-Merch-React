@@ -1,0 +1,40 @@
+.filter-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.filter-categories {
+  padding: 1rem 0.5rem;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.reset-btn {
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.reset-btn:hover {
+  text-decoration: var(--primary-color) underline;
+}
+
+/* input[type="range"] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: var(--primary-color);
+} */
+
+@media (max-width: 700px) {
+  .overflow-scroll {
+    height: 100vh;
+    overflow: scroll;
+  }
+}

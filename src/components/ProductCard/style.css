@@ -1,0 +1,17 @@
+.wishlist-btn {
+  margin-top: 0.35rem;
+}
+
+.rating-badge {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.25rem;
+  background-color: var(--white);
+  padding: 0 0.35rem;
+}
+
+.filled-heart {
+  color: var(--primary-color);
+}
