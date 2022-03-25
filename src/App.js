@@ -4,6 +4,7 @@ import { Navbar } from "./components";
 import { routes } from "./constants";
 import { HomePage } from "./pages/";
 
+
 function App() {
   return (
     <div className="App">
