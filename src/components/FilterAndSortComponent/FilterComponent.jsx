@@ -141,18 +141,6 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
           </ul>
         </div>
 
-        <div className="filter-categories">
-          <p className="filter-title mb-0-5">OTHER</p>
-          <ul className="list-style-none">
-            <li className="text-light-weight my-0-25">
-              <input type="checkbox" name="accesory-type" id="other-cat" />
-              <label className="ml-0-25" htmlFor="other-cat">
-                Include out of stock
-              </label>
-            </li>
-          </ul>
-        </div>
-
         <div
           className={
             showBottombar.showFilterByTab

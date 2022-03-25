@@ -5,16 +5,7 @@ const filterByCategory = [
   "Tshirt",
   "Mobile_Cover",
 ];
-const filterByAlbum = [
-  "Fearless",
-  "Speak_Now",
-  "Red",
-  "1989",
-  "Reputation",
-  "Lover",
-  "Folklore",
-  "Evermore",
-];
+const filterByAlbum = ["Fearless", "Red", "1989", "Reputation", "Lover"];
 const filterByRating = [4, 3, 2, 1];
 
 const sortingOptions = ["High_to_Low", "Low_to_High"];
