@@ -10,6 +10,14 @@ const filterByRating = [4, 3, 2, 1];
 
 const sortingOptions = ["High_to_Low", "Low_to_High"];
 
+const defaultUserDataState = {
+  token: "",
+  firstName: "",
+  lastName: "",
+  cart: [],
+  wishlist: "",
+};
+
 const defaultFilterState = {
   categories: filterByCategory.map((category) => ({
     type: category.toUpperCase(),
@@ -27,6 +35,9 @@ const defaultFilterState = {
 const routes = {
   HOME_PAGE: "/",
   PRODUCTS_PAGE: "/products-page",
+  LOGIN_PAGE: "/login-page",
+  SIGNUP_PAGE: "/signup-page",
+  PROFILE_PAGE: "profile-page",
 };
 
 const actionType = {
@@ -47,11 +58,16 @@ const actionType = {
     RESET_SORT: "RESET_SORT",
     RESET_FILTER: "RESET_FILTER",
   },
+  USER_ACTION: {
+    SAVE_USER_DATA: "SAVE_USER_DATA",
+    USER_LOGOUT: "USER_LOGOUT",
+  },
 };
 
 export {
   routes,
   actionType,
+  defaultUserDataState,
   defaultFilterState,
   filterByAlbum,
   filterByCategory,
