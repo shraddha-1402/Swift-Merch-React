@@ -345,19 +345,27 @@ i {
   border-radius: 50%;
   cursor: pointer;
 }
-.small-icon {
+.xs-icon-bg {
   font-size: 1.25rem;
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
 }
-.medium-icon {
+.xs-icon {
+  font-size: 1.25rem;
+  line-height: 2rem;
+}
+.sm-icon {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+.md-icon {
   font-size: 1.5rem;
   width: 2.25rem;
   height: 2.25rem;
   line-height: 2.25rem;
 }
-.large-icon {
+.lg-icon {
   font-size: 2rem;
   width: 2.75rem;
   height: 2.75rem;

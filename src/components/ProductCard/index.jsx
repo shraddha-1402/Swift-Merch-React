@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card m-1 mw-16r">
       <div className="pos-rel">
-        <button className="pos-abs card-badge-left small-icon icon icon-btn">
+        <button className="pos-abs card-badge-left xs-icon-bg icon icon-btn">
           <FaHeart
             className={`wishlist-btn ${inWishlist ? "filled-heart" : ""} `}
           />
