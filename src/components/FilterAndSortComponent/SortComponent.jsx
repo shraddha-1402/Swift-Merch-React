@@ -66,7 +66,7 @@ const SortComponent = ({ showBottombar, setShowBottombar }) => {
 };
 
 SortComponent.propTypes = {
-  showBottombar: PropTypes.bool,
+  showBottombar: PropTypes.object,
   setShowBottombar: PropTypes.func,
 };
 

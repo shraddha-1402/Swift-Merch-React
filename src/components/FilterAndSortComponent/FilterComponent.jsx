@@ -168,7 +168,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
 };
 
 FilterComponent.propTypes = {
-  showBottombar: PropTypes.bool,
+  showBottombar: PropTypes.object,
   setShowBottombar: PropTypes.func,
 };
 
