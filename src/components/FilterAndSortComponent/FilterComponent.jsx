@@ -1,5 +1,6 @@
-import React from "react";
 import "./style.css";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   filterByCategory,
   filterByAlbum,
@@ -164,6 +165,11 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
       </div>
     </div>
   );
+};
+
+FilterComponent.propTypes = {
+  showBottombar: PropTypes.object,
+  setShowBottombar: PropTypes.func,
 };
 
 export { FilterComponent };

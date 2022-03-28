@@ -4,22 +4,12 @@ import PropTypes from "prop-types";
 import { FaCartPlus, FaHeart, FaStar, FaArrowRight } from "react-icons/fa";
 
 const ProductCard = ({ product }) => {
-  const {
-    _id,
-    img,
-    name,
-    price,
-    mrp,
-    album,
-    rating,
-    inWishlist,
-    inCart,
-  } = product;
+  const { img, name, price, mrp, album, rating, inWishlist, inCart } = product;
 
   return (
     <div className="card m-1 mw-16r">
       <div className="pos-rel">
-        <button className="pos-abs card-badge-left small-icon icon icon-btn">
+        <button className="pos-abs card-badge-left xs-icon-bg icon icon-btn">
           <FaHeart
             className={`wishlist-btn ${inWishlist ? "filled-heart" : ""} `}
           />

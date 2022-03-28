@@ -1,5 +1,6 @@
-import React from "react";
 import "./style.css";
+import React from "react";
+import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 import { actionType, sortingOptions } from "../../constants";
 import { useFilter } from "../../context/filter-context";
@@ -62,6 +63,11 @@ const SortComponent = ({ showBottombar, setShowBottombar }) => {
       </div>
     </div>
   );
+};
+
+SortComponent.propTypes = {
+  showBottombar: PropTypes.object,
+  setShowBottombar: PropTypes.func,
 };
 
 export { SortComponent };

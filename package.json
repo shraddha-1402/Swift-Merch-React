@@ -21,7 +21,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix",
+    "format": "prettier --write \"**/*.{js, jsx, json, md}\""
+  },
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pretty-quick --staged"
+    }
   },
   "browserslist": {
     "production": [
@@ -36,7 +47,12 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.11.0",
-    "eslint-plugin-react": "^7.29.4"
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.6.1",
+    "pretty-quick": "^3.1.3"
   }
 }

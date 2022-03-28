@@ -1,10 +1,22 @@
 import "./style.css";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FaHeart,
+  FaSearch,
+  FaShoppingCart,
+  FaUser,
+  FaUserCheck,
+} from "react-icons/fa";
+import { useUserData } from "../../context";
 import { routes } from "../../constants";
-import { FaHeart, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const {
+    userDataState: { token },
+  } = useUserData();
+  const navigate = useNavigate();
+
   return (
     <nav className="pos-sticky-t0 z-1">
       <div className="nav pos-rel">
@@ -25,13 +37,17 @@ const Navbar = () => {
               <FaSearch />
             </button>
           </li>
-          <li className="icon small-icon">
-            <FaUser />
+          <li className="icon" onClick={() => navigate(routes.PROFILE_PAGE)}>
+            {token ? (
+              <FaUserCheck className="sm-icon" />
+            ) : (
+              <FaUser className="xs-icon" />
+            )}
           </li>
-          <li className="icon small-icon pos-rel">
+          <li className="icon xs-icon pos-rel">
             <FaHeart />
           </li>
-          <li className="icon small-icon pos-rel">
+          <li className="icon xs-icon pos-rel">
             <FaShoppingCart />
           </li>
         </ul>
