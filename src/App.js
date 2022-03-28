@@ -7,6 +7,7 @@ import { useUserData } from "./context";
 import {
   HomePage,
   ProductListingPage,
+  WishlistPage,
   LoginPage,
   SignupPage,
   ProfilePage,
@@ -29,6 +30,12 @@ function App() {
             token ? <ProfilePage /> : <Navigate to={routes.LOGIN_PAGE} />
           }
           path={routes.PROFILE_PAGE}
+        />
+        <Route
+          element={
+            token ? <WishlistPage /> : <Navigate to={routes.LOGIN_PAGE} />
+          }
+          path={routes.WISHLIST_PAGE}
         />
       </Routes>
     </div>

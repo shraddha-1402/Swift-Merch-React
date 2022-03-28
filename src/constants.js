@@ -15,7 +15,7 @@ const defaultUserDataState = {
   firstName: "",
   lastName: "",
   cart: [],
-  wishlist: "",
+  wishlist: [],
 };
 
 const defaultFilterState = {
@@ -35,6 +35,7 @@ const defaultFilterState = {
 const routes = {
   HOME_PAGE: "/",
   PRODUCTS_PAGE: "/products-page",
+  WISHLIST_PAGE: "/wishlist-page",
   LOGIN_PAGE: "/login-page",
   SIGNUP_PAGE: "/signup-page",
   PROFILE_PAGE: "profile-page",
@@ -45,6 +46,7 @@ const actionType = {
     UPDATE_PRODUCTS: "UPDATE_PRODUCTS",
     RESET_PRODUCTS: "RESET_PRODUCTS",
     TOGGLE_WISHLIST_PROPERTY: "TOGGLE_WISHLIST_PROPERTY",
+    SET_WISHLIST: "SET_WISHLIST",
     TOGGLE_CART_PROPERTY: "TOGGLE_CART_PROPERTY",
     INCREMENT_CART_QUANTITY: "INCREMENT_CART_QUANTITY",
     DECREMENT_CART_QUANTITY: "DECREMENT_CART_QUANTITY",
@@ -60,6 +62,8 @@ const actionType = {
   },
   USER_ACTION: {
     SAVE_USER_DATA: "SAVE_USER_DATA",
+    ADD_TO_WISHLIST: "ADD_TO_WISHLIST",
+    REMOVE_FROM_WISHLIST: "REMOVE_FROM_WISHLIST",
     USER_LOGOUT: "USER_LOGOUT",
   },
 };
