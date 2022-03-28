@@ -1,15 +1,57 @@
 import "./style.css";
-import React from "react";
 import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useProduct, useUserData } from "../../context";
+import { routes } from "../../constants";
+import { wishlistHandler } from "../../utils/services";
 import { FaCartPlus, FaHeart, FaStar, FaArrowRight } from "react-icons/fa";
 
 const ProductCard = ({ product }) => {
-  const { img, name, price, mrp, album, rating, inWishlist, inCart } = product;
+  const { _id, img, name, price, mrp, album, rating, inWishlist, inCart } =
+    product;
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useUserData();
+  const { productsDispatch } = useProduct();
+  const navigate = useNavigate();
+  const [disableWishlist, setDisableWishlist] = useState(false);
+
+  useEffect(() => {
+    return () => setDisableWishlist(false);
+  }, []);
+
+  const handleWishlistClick = async () => {
+    setDisableWishlist(true);
+    if (token === null || token === "") navigate(routes.LOGIN_PAGE);
+    else if (inWishlist) {
+      await wishlistHandler(
+        _id,
+        "DELETE",
+        token,
+        productsDispatch,
+        userDataDispatch
+      );
+    } else
+      await wishlistHandler(
+        _id,
+        "POST",
+        token,
+        productsDispatch,
+        userDataDispatch
+      );
+    setDisableWishlist(false);
+  };
 
   return (
     <div className="card m-1 mw-16r">
       <div className="pos-rel">
-        <button className="pos-abs card-badge-left xs-icon-bg icon icon-btn">
+        <button
+          className="pos-abs card-badge-left xs-icon-bg icon icon-btn"
+          onClick={handleWishlistClick}
+          disabled={disableWishlist}
+        >
           <FaHeart
             className={`wishlist-btn ${inWishlist ? "filled-heart" : ""} `}
           />
