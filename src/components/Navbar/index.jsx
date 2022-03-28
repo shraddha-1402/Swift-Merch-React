@@ -13,7 +13,7 @@ import { routes } from "../../constants";
 
 const Navbar = () => {
   const {
-    userDataState: { token, wishlist },
+    userDataState: { token, wishlist, cart },
   } = useUserData();
   const navigate = useNavigate();
 
@@ -53,7 +53,12 @@ const Navbar = () => {
             )}
           </li>
           <li className="icon xs-icon pos-rel">
-            <FaShoppingCart />
+            <FaShoppingCart onClick={() => navigate(routes.CART_PAGE)} />
+            {token && (
+              <span className="pos-abs badge icon-badge sm-badge">
+                {cart.length}
+              </span>
+            )}
           </li>
         </ul>
       </div>
