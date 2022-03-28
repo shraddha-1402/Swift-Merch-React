@@ -1,0 +1,17 @@
+.cart-price-details {
+  max-width: 20rem;
+  position: sticky;
+  top: 15rem;
+}
+
+.cart-total-amt {
+  padding: 1rem 0;
+  border-top: 1px dashed var(--gray);
+  border-bottom: 1px dashed var(--gray);
+}
+
+@media (max-width: 700px) {
+  .cart-price-details {
+    min-width: 12rem;
+  }
+}
