@@ -7,6 +7,11 @@ const authHandler = async (
   userDispatch,
   productsDispatch
 ) => {
+  const {
+    PRODUCT_ACTIONS: { SET_CART, SET_WISHLIST },
+    USER_ACTION: { SAVE_USER_DATA },
+  } = actionType;
+
   try {
     const response = await axios.post(`/api/auth/${authAction}`, {
       ...credentials,
@@ -21,12 +26,16 @@ const authHandler = async (
 
     if (response.status === 201 || response.status === 200) {
       userDispatch({
-        type: actionType.USER_ACTION.SAVE_USER_DATA,
+        type: SAVE_USER_DATA,
         payload: { ...userData, token: response.data.encodedToken },
       });
       productsDispatch({
-        type: actionType.PRODUCT_ACTIONS.SET_WISHLIST,
+        type: SET_WISHLIST,
         payload: userData.wishlist,
+      });
+      productsDispatch({
+        type: SET_CART,
+        payload: userData.cart,
       });
     }
     return {

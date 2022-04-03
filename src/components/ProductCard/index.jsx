@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProduct, useUserData } from "../../context";
 import { routes } from "../../constants";
-import { wishlistHandler } from "../../utils/services";
+import { wishlistHandler, cartHandler } from "../../utils/services";
 import { FaCartPlus, FaHeart, FaStar, FaArrowRight } from "react-icons/fa";
 
 const ProductCard = ({ product }) => {
@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
   const { productsDispatch } = useProduct();
   const navigate = useNavigate();
   const [disableWishlist, setDisableWishlist] = useState(false);
+  const [disableCartAdd, setDisableCartAdd] = useState(false);
 
   useEffect(() => {
     return () => setDisableWishlist(false);
@@ -42,6 +43,14 @@ const ProductCard = ({ product }) => {
         userDataDispatch
       );
     setDisableWishlist(false);
+  };
+
+  const handleCartClick = async () => {
+    setDisableCartAdd(true);
+    if (token === null || token === "") navigate(routes.LOGIN_PAGE);
+    else
+      await cartHandler(_id, "POST", token, productsDispatch, userDataDispatch);
+    setDisableCartAdd(false);
   };
 
   return (
@@ -76,13 +85,20 @@ const ProductCard = ({ product }) => {
       <div className="flex-row">
         {inCart ? (
           <div className="m-0-5 w-100p">
-            <button className="btn btn-solid-primary w-100p">
+            <button
+              className="btn btn-solid-primary w-100p"
+              onClick={() => navigate(routes.CART_PAGE)}
+            >
               Go To Cart
               <FaArrowRight className="ml-0-25" />
             </button>
           </div>
         ) : (
-          <button className="btn btn-solid-primary m-0-5 w-100p">
+          <button
+            className="btn btn-solid-primary m-0-5 w-100p"
+            disabled={disableCartAdd}
+            onClick={handleCartClick}
+          >
             <FaCartPlus className="mr-0-25" />
             Add To Cart
           </button>

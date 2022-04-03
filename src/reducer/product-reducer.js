@@ -7,6 +7,7 @@ const productReducer = (state, action) => {
     TOGGLE_WISHLIST_PROPERTY,
     SET_WISHLIST,
     TOGGLE_CART_PROPERTY,
+    SET_CART,
     INCREMENT_CART_QUANTITY,
     DECREMENT_CART_QUANTITY,
     RESET_PRODUCTS,
@@ -47,6 +48,17 @@ const productReducer = (state, action) => {
         ),
       };
     }
+
+    case SET_CART: {
+      return {
+        products: state.products.map((product) => {
+          return action.payload.find((element) => element._id === product._id)
+            ? { ...product, inCart: true }
+            : product;
+        }),
+      };
+    }
+
     case INCREMENT_CART_QUANTITY: {
       return {
         products: state.products.map((product) =>

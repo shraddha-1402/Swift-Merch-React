@@ -1,0 +1,52 @@
+.horizontal-card {
+  display: flex;
+  margin: 1rem;
+  max-width: 28rem;
+}
+
+.horizontal-card-img {
+  flex-basis: 12rem;
+}
+
+.horizontal-card-text {
+  flex: 1;
+}
+
+.product-remove-btn {
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.quantity-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9em;
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary-color);
+  transition: all 0.1s ease;
+}
+
+.quantity-btn:active {
+  transform: scale(0.9);
+  transition: all 0.1s ease;
+}
+
+.product-qty {
+  margin: 0 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.product-qty-value {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--secondary-color);
+}
+
+@media (max-width: 400px) {
+  .horizontal-card {
+    flex-direction: column;
+    max-width: 16rem;
+  }
+}

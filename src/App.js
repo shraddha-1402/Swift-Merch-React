@@ -11,6 +11,7 @@ import {
   LoginPage,
   SignupPage,
   ProfilePage,
+  CartPage,
 } from "./pages/";
 
 function App() {
@@ -36,6 +37,10 @@ function App() {
             token ? <WishlistPage /> : <Navigate to={routes.LOGIN_PAGE} />
           }
           path={routes.WISHLIST_PAGE}
+        />
+        <Route
+          element={token ? <CartPage /> : <Navigate to={routes.LOGIN_PAGE} />}
+          path={routes.CART_PAGE}
         />
       </Routes>
     </div>
