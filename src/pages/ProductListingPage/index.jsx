@@ -35,12 +35,17 @@ const ProductListingPage = () => {
           setShowBottombar={setShowBottombar}
         />
       </div>
-
-      <div className="product-container grid-3-col-layout pos-rel">
-        {filteredSortedProducts.map((product) => {
-          return <ProductCard key={product._id} product={product} />;
-        })}
-      </div>
+      {filteredSortedProducts.length ? (
+        <div className="product-container grid-3-col-layout pos-rel">
+          {filteredSortedProducts.map((product) => {
+            return <ProductCard key={product._id} product={product} />;
+          })}
+        </div>
+      ) : (
+        <h2 className="info-text">
+          Sorry no products available for the selected filters
+        </h2>
+      )}
       <div className="filter-mobile-bottombar">
         <button
           className="filter-mobile-btn"

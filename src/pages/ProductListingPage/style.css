@@ -26,6 +26,12 @@
   align-items: start;
 }
 
+.info-text {
+  margin: 3rem 1rem 1rem;
+  text-align: center;
+  width: 100%;
+}
+
 @media (max-width: 700px) {
   .hidden-for-mobile {
     display: none;
