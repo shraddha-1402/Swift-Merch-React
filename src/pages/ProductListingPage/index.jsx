@@ -1,17 +1,25 @@
 import "./style.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFilter, useProduct } from "../../context";
 import { applyFilterAndSort } from "../../utils/filterAndSortFunctions/applyFilterAndSort";
 import { SortComponent, FilterComponent, ProductCard } from "../../components";
+import { actionType } from "../../constants";
 
 const ProductListingPage = () => {
-  const { filterState } = useFilter();
+  const { filterState, filterDispatch } = useFilter();
   const { productsState } = useProduct();
 
   const [showBottombar, setShowBottombar] = useState({
     showSortByTab: false,
     showFilterByTab: false,
   });
+
+  useEffect(() => {
+    return () => {
+      filterDispatch({ type: actionType.FILTER_ACTIONS.RESET_FILTER });
+      filterDispatch({ type: actionType.FILTER_ACTIONS.RESET_SORT });
+    };
+  }, []);
 
   const filteredSortedProducts = applyFilterAndSort(filterState, productsState);
 
