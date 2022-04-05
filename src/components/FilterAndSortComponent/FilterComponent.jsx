@@ -17,7 +17,10 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
       showFilterByTab: !showBottombar.showFilterByTab,
     }));
 
-  const { filterState, filterDispatch } = useFilter();
+  const {
+    filterState: { priceRange, categories, albums, rating },
+    filterDispatch,
+  } = useFilter();
   return (
     <div className={showBottombar.showFilterByTab ? "" : "hidden-for-mobile"}>
       <div
@@ -45,7 +48,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
             max="1000"
             step="100"
             className="w-100p price-range"
-            value={filterState.priceRange}
+            value={priceRange}
             onChange={(event) => {
               if (event.target.value >= 200)
                 filterDispatch({
@@ -56,7 +59,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
           />
           <div className="flex-row justify-spc-bet">
             <span>200</span>
-            <span>{filterState.priceRange}</span>
+            <span>{priceRange}</span>
           </div>
         </div>
 
@@ -70,11 +73,11 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
                     type="checkbox"
                     name="accesory-type"
                     id={`category${index + 1}`}
-                    checked={filterState.categories[index].status}
+                    checked={categories[index].status}
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_CATEGORIES,
-                        payload: index,
+                        payload: filter,
                       });
                     }}
                   />
@@ -97,11 +100,11 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
                     type="checkbox"
                     name="accesory-type"
                     id={`album${index + 1}`}
-                    checked={filterState.albums[index].status}
+                    checked={albums[index].status}
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_ALBUMS,
-                        payload: index,
+                        payload: filter,
                       });
                     }}
                   />
@@ -117,24 +120,28 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
         <div className="filter-categories">
           <p className="filter-title mb-0-5">RATING</p>
           <ul className="list-style-none">
-            {filterByRating.map((rating, index) => {
+            {filterByRating.map((productRating, index) => {
               return (
                 <li className="text-light-weight my-0-25" key={index}>
                   <input
                     type="radio"
                     name="rating"
-                    id={`${rating}_rating`}
-                    value={filterState.rating}
-                    checked={filterState.rating === rating}
+                    id={`${productRating}_rating`}
+                    value={rating}
+                    checked={rating === productRating}
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_RATING,
-                        payload: rating,
+                        payload: productRating,
                       });
                     }}
                   />
-                  <label className="ml-0-25 mr-1" htmlFor={`${rating}_rating`}>
-                    More than {rating} <FaStar className="rating-checked" />
+                  <label
+                    className="ml-0-25 mr-1"
+                    htmlFor={`${productRating}_rating`}
+                  >
+                    More than {productRating}
+                    <FaStar className="rating-checked" />
                   </label>
                 </li>
               );

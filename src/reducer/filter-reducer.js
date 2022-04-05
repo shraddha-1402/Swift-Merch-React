@@ -16,8 +16,8 @@ const filterReducer = (state, action) => {
     case FILTER_BY_CATEGORIES:
       return {
         ...state,
-        categories: state.categories.map((category, index) =>
-          index === action.payload
+        categories: state.categories.map((category) =>
+          category.type === action.payload.toUpperCase()
             ? { ...category, status: !category.status }
             : category
         ),
@@ -25,8 +25,10 @@ const filterReducer = (state, action) => {
     case FILTER_BY_ALBUMS:
       return {
         ...state,
-        albums: state.albums.map((album, index) =>
-          index === action.payload ? { ...album, status: !album.status } : album
+        albums: state.albums.map((album) =>
+          album.type === action.payload.toUpperCase()
+            ? { ...album, status: !album.status }
+            : album
         ),
       };
     case FILTER_BY_RATING:
