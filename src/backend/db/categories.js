@@ -11,17 +11,20 @@ export const categories = [
     imgUrl: musicCategory,
     imgAlt: "music-albums",
     category: "Music Albums",
+    filterName: "Music",
   },
   {
     _id: uuid(),
     imgUrl: clothCategory,
     imgAlt: "clothes",
     category: "Hoodies & T-Shirts",
+    filterName: "Clothes",
   },
   {
     _id: uuid(),
     imgUrl: mobileCoverCategory,
     imgAlt: "mobile-covers",
     category: "Mobile Covers",
+    filterName: "Mobile_Cover",
   },
 ];
