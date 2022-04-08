@@ -5,7 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import {
-  ProductProvider,
+  DataProvider,
   FilterProvider,
   UserDataProvider,
   AuthProvider,
@@ -19,11 +19,11 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <UserDataProvider>
-          <ProductProvider>
+          <DataProvider>
             <FilterProvider>
               <App />
             </FilterProvider>
-          </ProductProvider>
+          </DataProvider>
         </UserDataProvider>
       </AuthProvider>
     </BrowserRouter>

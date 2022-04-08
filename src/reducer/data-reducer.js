@@ -1,17 +1,18 @@
 import { actionType } from "../constants";
 
-const productReducer = (state, action) => {
-  const { PRODUCT_ACTIONS } = actionType;
+const dataReducer = (state, action) => {
   const {
-    UPDATE_PRODUCTS,
-    TOGGLE_WISHLIST_PROPERTY,
-    SET_WISHLIST,
-    TOGGLE_CART_PROPERTY,
-    SET_CART,
-    INCREMENT_CART_QUANTITY,
-    DECREMENT_CART_QUANTITY,
-    RESET_PRODUCTS,
-  } = PRODUCT_ACTIONS;
+    DATA: {
+      UPDATE_PRODUCTS,
+      TOGGLE_WISHLIST_PROPERTY,
+      SET_WISHLIST,
+      TOGGLE_CART_PROPERTY,
+      SET_CART,
+      INCREMENT_CART_QUANTITY,
+      DECREMENT_CART_QUANTITY,
+      RESET_PRODUCTS,
+    },
+  } = actionType;
 
   switch (action.type) {
     case UPDATE_PRODUCTS: {
@@ -93,4 +94,4 @@ const productReducer = (state, action) => {
   }
 };
 
-export { productReducer };
+export { dataReducer };
