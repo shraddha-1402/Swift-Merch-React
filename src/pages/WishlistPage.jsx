@@ -15,7 +15,9 @@ const WishlistPage = () => {
   } = useAuth();
 
   useEffect(() => {
-    getAllWishlistProducts({ token, dataDispatch });
+    (async () => {
+      await getAllWishlistProducts({ token, dataDispatch });
+    })();
   }, []);
 
   return (
@@ -30,7 +32,7 @@ const WishlistPage = () => {
         </p>
       ) : (
         <div className="grid-3-col-layout gap-0-5">
-          {wishlist.map((product) => {
+          {wishlist?.map((product) => {
             return <ProductCard product={product} key={product._id} />;
           })}
         </div>
