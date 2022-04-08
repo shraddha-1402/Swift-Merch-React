@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
-import { useProduct, useUserData } from "../context/";
+import { useData, useAuth } from "../context/";
 import { authHandler } from "../utils/services/";
 import { routes } from "../constants";
 
@@ -25,8 +25,8 @@ const LoginPage = () => {
   const { email, password } = loginCredentials;
 
   const navigate = useNavigate();
-  const { userDataDispatch } = useUserData();
-  const { productsDispatch } = useProduct();
+  const { authDispatch } = useAuth();
+  const { dataDispatch } = useData();
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
@@ -34,8 +34,8 @@ const LoginPage = () => {
       const res = await authHandler(
         loginCredentials,
         "login",
-        userDataDispatch,
-        productsDispatch
+        authDispatch,
+        dataDispatch
       );
       if (res.status === 200) navigate(routes.PRODUCTS_PAGE);
     }
