@@ -1,52 +1,56 @@
 import axios from "axios";
-import { actionType } from "../../constants";
+import { actionType, routes } from "../../constants";
 
-const authHandler = async (
+const loginHandler = async ({
   credentials,
-  authAction,
   authDispatch,
-  dataDispatch
-) => {
+  dataDispatch,
+  navigate,
+}) => {
   const {
     DATA: { SET_CART, SET_WISHLIST },
-    AUTH: { SAVE_USER_DATA },
+    AUTH: { USER_LOGIN },
   } = actionType;
 
   try {
-    const response = await axios.post(`/api/auth/${authAction}`, {
+    const { data, status, statusText } = await axios.post("/api/auth/login", {
       ...credentials,
     });
-    const userData =
-      authAction === "login"
-        ? { ...response.data.foundUser }
-        : { ...response.data.createdUser };
-
-    localStorage.setItem("token", response.data.encodedToken);
-    localStorage.setItem("userData", JSON.stringify(userData));
-
-    if (response.status === 201 || response.status === 200) {
+    if (status === 200) {
+      const userData = {
+        token: data.encodedToken,
+        userInfo: data.foundUser,
+      };
+      localStorage.setItem("ecommData", JSON.stringify(userData));
       authDispatch({
-        type: SAVE_USER_DATA,
-        payload: { ...userData, token: response.data.encodedToken },
+        type: USER_LOGIN,
+        payload: { ...userData },
       });
       dataDispatch({
         type: SET_WISHLIST,
-        payload: userData.wishlist,
+        payload: data.foundUser.wishlist,
       });
       dataDispatch({
         type: SET_CART,
-        payload: userData.cart,
+        payload: data.foundUser.cart,
       });
-    }
-    return {
-      status: response.status,
-    };
+      navigate(routes.PRODUCTS_PAGE);
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
-    console.error(error);
-    return {
-      status: error.response.status,
-    };
+    console.log(error);
   }
 };
 
-export { authHandler };
+const signupHandler = async ({ credentials, navigate }) => {
+  try {
+    const { status, statusText } = await axios.post("/api/auth/signup", {
+      ...credentials,
+    });
+    if (status === 201) navigate(routes.LOGIN_PAGE);
+    else throw new Error(`${statusText} ${status}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { loginHandler, signupHandler };
