@@ -1,6 +1,7 @@
 import { actionType } from "../constants";
 
 const dataReducer = (state, action) => {
+  const { type, payload } = action;
   const {
     DATA: {
       UPDATE_PRODUCTS,
@@ -14,56 +15,49 @@ const dataReducer = (state, action) => {
     },
   } = actionType;
 
-  switch (action.type) {
+  switch (type) {
     case UPDATE_PRODUCTS: {
       return {
-        products: action.payload,
+        ...state,
+        products: payload,
       };
     }
 
     case TOGGLE_WISHLIST_PROPERTY: {
       return {
         products: state.products.map((product) =>
-          product._id === action.payload
+          product._id === payload
             ? { ...product, inWishlist: !product.inWishlist }
             : product
         ),
       };
     }
-    case SET_WISHLIST: {
+    case SET_WISHLIST:
       return {
-        products: state.products.map((product) => {
-          return action.payload.find((element) => element._id === product._id)
-            ? { ...product, inWishlist: true }
-            : product;
-        }),
+        ...state,
+        wishlist: payload.wishlist,
       };
-    }
 
     case TOGGLE_CART_PROPERTY: {
       return {
         products: state.products.map((product) =>
-          product._id === action.payload
+          product._id === payload
             ? { ...product, inCart: !product.inCart, cartQuantity: 1 }
             : product
         ),
       };
     }
 
-    case SET_CART: {
+    case SET_CART:
       return {
-        products: state.products.map((product) => {
-          return action.payload.find((element) => element._id === product._id)
-            ? { ...product, inCart: true }
-            : product;
-        }),
+        ...state,
+        cart: payload.cart,
       };
-    }
 
     case INCREMENT_CART_QUANTITY: {
       return {
         products: state.products.map((product) =>
-          product._id === action.payload
+          product._id === payload
             ? { ...product, cartQuantity: product.cartQuantity + 1 }
             : product
         ),
@@ -72,7 +66,7 @@ const dataReducer = (state, action) => {
     case DECREMENT_CART_QUANTITY: {
       return {
         products: state.products.map((product) =>
-          product._id === action.payload
+          product._id === payload
             ? { ...product, cartQuantity: product.cartQuantity - 1 }
             : product
         ),
