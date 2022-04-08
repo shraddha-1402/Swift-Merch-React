@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
-import { useUserData } from "../context/";
+import { useData } from "../context/";
 import { authHandler } from "../utils/services";
 import { routes } from "../constants";
 
@@ -45,7 +45,7 @@ const SignupPage = () => {
   };
 
   const navigate = useNavigate();
-  const { userDataDispatch } = useUserData();
+  const { dataDispatch } = useData();
 
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
@@ -58,7 +58,7 @@ const SignupPage = () => {
       const res = await authHandler(
         { ...signupCredentials },
         "signup",
-        userDataDispatch
+        dataDispatch
       );
       if (res.status === 201) navigate(routes.PRODUCTS_PAGE);
     }
