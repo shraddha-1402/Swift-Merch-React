@@ -43,6 +43,10 @@ const routes = {
 };
 
 const actionType = {
+  AUTH: {
+    USER_LOGIN: "USER_LOGIN",
+    USER_LOGOUT: "USER_LOGOUT",
+  },
   PRODUCT_ACTIONS: {
     UPDATE_PRODUCTS: "UPDATE_PRODUCTS",
     RESET_PRODUCTS: "RESET_PRODUCTS",
