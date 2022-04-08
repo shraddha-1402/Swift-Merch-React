@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./components";
 import { routes } from "./constants";
-import { useUserData } from "./context";
+import { useAuth } from "./context";
 import {
   HomePage,
   ProductListingPage,
@@ -16,8 +16,8 @@ import {
 
 function App() {
   const {
-    userDataState: { token },
-  } = useUserData();
+    authState: { token },
+  } = useAuth();
   return (
     <div className="App">
       <Navbar />
