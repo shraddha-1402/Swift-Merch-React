@@ -1,13 +1,13 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
-import { useFilter, useProduct } from "../../context";
+import { useFilter, useData } from "../../context";
 import { applyFilterAndSort } from "../../utils/filterAndSortFunctions/applyFilterAndSort";
 import { SortComponent, FilterComponent, ProductCard } from "../../components";
 import { actionType } from "../../constants";
 
 const ProductListingPage = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { productsState } = useProduct();
+  const { dataState } = useData();
 
   const [showBottombar, setShowBottombar] = useState({
     showSortByTab: false,
@@ -21,7 +21,7 @@ const ProductListingPage = () => {
     };
   }, []);
 
-  const filteredSortedProducts = applyFilterAndSort(filterState, productsState);
+  const filteredSortedProducts = applyFilterAndSort(filterState, dataState);
 
   return (
     <main className="flex-row main-content">
@@ -35,7 +35,7 @@ const ProductListingPage = () => {
           setShowBottombar={setShowBottombar}
         />
       </div>
-      {filteredSortedProducts.length ? (
+      {filteredSortedProducts?.length ? (
         <div className="product-container grid-3-col-layout pos-rel">
           {filteredSortedProducts.map((product) => {
             return <ProductCard key={product._id} product={product} />;
