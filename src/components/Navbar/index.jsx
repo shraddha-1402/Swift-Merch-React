@@ -49,7 +49,7 @@ const Navbar = () => {
           </li>
           <li className="icon xs-icon pos-rel">
             <FaHeart onClick={() => navigate(routes.WISHLIST_PAGE)} />
-            {token && (
+            {!!token && (
               <span className="pos-abs badge icon-badge sm-badge">
                 {wishlist?.length}
               </span>
@@ -57,7 +57,7 @@ const Navbar = () => {
           </li>
           <li className="icon xs-icon pos-rel">
             <FaShoppingCart onClick={() => navigate(routes.CART_PAGE)} />
-            {token && (
+            {!!token && (
               <span className="pos-abs badge icon-badge sm-badge">
                 {cart?.length}
               </span>
