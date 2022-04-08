@@ -20,7 +20,7 @@ const Header = () => {
     setTimeout(changeCarousalImg, 2000);
   };
   useEffect(() => {
-    changeCarousalImg();
+    if (window.innerWidth < 600) changeCarousalImg();
     return () => {
       setCarousalImgIdx(0);
     };
