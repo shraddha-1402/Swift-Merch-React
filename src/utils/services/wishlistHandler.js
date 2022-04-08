@@ -1,6 +1,24 @@
 import axios from "axios";
 import { actionType } from "../../constants";
 
+const getAllWishlistProducts = async ({ token, dataDispatch }) => {
+  try {
+    const { data, status, statusText } = await axios.get("/api/user/wishlist", {
+      headers: { authorization: token },
+    });
+    if (status === 200)
+      dataDispatch({
+        type: actionType.DATA.SET_WISHLIST,
+        payload: {
+          wishlist: data.wishlist,
+        },
+      });
+    else throw new Error(`${statusText} ${status}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const wishlistHandler = async (
   _id,
   requestType,
@@ -58,4 +76,4 @@ const wishlistHandler = async (
   }
 };
 
-export { wishlistHandler };
+export { wishlistHandler, getAllWishlistProducts };
