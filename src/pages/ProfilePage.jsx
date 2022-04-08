@@ -1,22 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { actionType, routes } from "../constants";
-import { useData, useAuth } from "../context";
+import { useAuth } from "../context";
 
 const ProfilePage = () => {
   const {
     authState: { userInfo },
-    userDataDispatch,
+    authDispatch,
   } = useAuth();
   const { firstName, lastName, email } = userInfo;
-  const { dataDispatch } = useData();
   const navigate = useNavigate();
 
   const handleLogoutClick = () => {
-    userDataDispatch({ type: actionType.USER_ACTION.USER_LOGOUT });
-    dataDispatch({
-      type: actionType.PRODUCT_ACTIONS.RESET_PRODUCTS,
-    });
+    authDispatch({ type: actionType.USER_ACTION.USER_LOGOUT });
+
     navigate(routes.HOME_PAGE);
   };
 
