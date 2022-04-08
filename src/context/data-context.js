@@ -11,8 +11,8 @@ const localStorageData = JSON.parse(localStorage.getItem("ecommData"));
 const DataProvider = ({ children }) => {
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     products: [],
-    wishlist: localStorageData?.userInfo?.wishlist | [],
-    cart: localStorageData?.userInfo?.cart | [],
+    wishlist: localStorageData ? localStorageData.userInfo?.wishlist : [],
+    cart: localStorageData ? localStorageData.userInfo?.cart : [],
   });
 
   useEffect(() => {
