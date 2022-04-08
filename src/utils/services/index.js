@@ -1,3 +1,3 @@
 export { authHandler } from "./authHandler";
-export { wishlistHandler } from "./wishlistHandler";
+export { wishlistHandler, getAllWishlistProducts } from "./wishlistHandler";
 export { cartHandler } from "./cartHandler";
