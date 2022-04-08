@@ -1,21 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useProduct } from "../context/index";
+import { useAuth, useData } from "../context/index";
 import { ProductCard } from "../components";
 import { routes } from "../constants";
+import { getAllWishlistProducts } from "../utils/services";
 
 const WishlistPage = () => {
-  const { productsState } = useProduct();
-  const [wishlist, setWishlist] = useState([]);
+  const {
+    dataState: { wishlist },
+    dataDispatch,
+  } = useData();
+  const {
+    authState: { token },
+  } = useAuth();
 
-  useEffect(async () => {
-    setWishlist(productsState.products.filter((product) => product.inWishlist));
-  }, [productsState]);
+  useEffect(() => {
+    getAllWishlistProducts({ token, dataDispatch });
+  }, []);
 
   return (
     <main className="my-3-5 w-100p">
       <h1 className="center-text">My Wishlist</h1>
-      {wishlist.length === 0 ? (
+      {wishlist?.length === 0 ? (
         <p className="my-2 center-text">
           Your Wishlist is Empty!
           <Link to={routes.PRODUCTS_PAGE} className="link primary-text">
