@@ -7,7 +7,7 @@ const FormInput = ({
   value,
   changeHandler,
   placeholder,
-  property,
+  name,
   minLength,
 }) => {
   return (
@@ -21,9 +21,10 @@ const FormInput = ({
         className="input std-input"
         required
         placeholder={placeholder}
+        name={name}
         value={value}
         minLength={minLength}
-        onChange={(event) => changeHandler(event, property)}
+        onChange={(event) => changeHandler(event)}
       />
     </div>
   );
@@ -35,7 +36,7 @@ FormInput.propTypes = {
   value: PropTypes.string,
   minLength: PropTypes.number,
   placeholder: PropTypes.string,
-  property: PropTypes.string,
+  name: PropTypes.string,
   changeHandler: PropTypes.func,
 };
 
