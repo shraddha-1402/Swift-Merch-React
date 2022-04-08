@@ -2,54 +2,46 @@ import "./style.css";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useProduct, useUserData } from "../../context";
-import { routes } from "../../constants";
-import { wishlistHandler, cartHandler } from "../../utils/services";
 import { FaCartPlus, FaHeart, FaStar, FaArrowRight } from "react-icons/fa";
+import { routes } from "../../constants";
+import { useData, useAuth } from "../../context";
+import { useCart, useWishlist } from "../../hooks";
+import { wishlistHandler, cartHandler } from "../../utils/services";
 
 const ProductCard = ({ product }) => {
-  const { _id, img, name, price, mrp, album, rating, inWishlist, inCart } =
-    product;
+  const { _id, img, name, price, mrp, album, rating } = product;
+  const { inWishlist } = useWishlist({ product });
+  const { inCart } = useCart({ product });
   const {
-    userDataState: { token },
-    userDataDispatch,
-  } = useUserData();
-  const { productsDispatch } = useProduct();
+    authState: { token },
+    authDispatch,
+  } = useAuth();
+  const { dataDispatch } = useData();
   const navigate = useNavigate();
   const [disableWishlist, setDisableWishlist] = useState(false);
   const [disableCartAdd, setDisableCartAdd] = useState(false);
 
   useEffect(() => {
-    return () => setDisableWishlist(false);
+    return () => {
+      setDisableWishlist(false);
+      setDisableCartAdd(false);
+    };
   }, []);
 
   const handleWishlistClick = async () => {
     setDisableWishlist(true);
     if (token === null || token === "") navigate(routes.LOGIN_PAGE);
     else if (inWishlist) {
-      await wishlistHandler(
-        _id,
-        "DELETE",
-        token,
-        productsDispatch,
-        userDataDispatch
-      );
+      await wishlistHandler(_id, "DELETE", token, dataDispatch, authDispatch);
     } else
-      await wishlistHandler(
-        _id,
-        "POST",
-        token,
-        productsDispatch,
-        userDataDispatch
-      );
+      await wishlistHandler(_id, "POST", token, dataDispatch, authDispatch);
     setDisableWishlist(false);
   };
 
   const handleCartClick = async () => {
     setDisableCartAdd(true);
     if (token === null || token === "") navigate(routes.LOGIN_PAGE);
-    else
-      await cartHandler(_id, "POST", token, productsDispatch, userDataDispatch);
+    else await cartHandler(_id, "POST", token, dataDispatch, authDispatch);
     setDisableCartAdd(false);
   };
 
