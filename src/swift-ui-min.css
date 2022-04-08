@@ -922,3 +922,6 @@ input[type="search"].nav-search-input::-webkit-search-cancel-button {
 .red-text {
   color: var(--red);
 }
+.curr-pointer {
+  cursor: pointer;
+}
