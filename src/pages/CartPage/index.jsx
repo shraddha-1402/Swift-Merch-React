@@ -1,23 +1,28 @@
 import "./style.css";
-import React, { useEffect, useState } from "react";
-import { useProduct, useUserData } from "../../context";
+import React, { useEffect } from "react";
+import { useData, useAuth } from "../../context";
 import { Link } from "react-router-dom";
 import { CartCard, CartPriceDetailCard } from "../../components";
 import { routes } from "../../constants";
+import { getAllCartProducts } from "../../utils/services";
 
 const CartPage = () => {
-  const { userDataState } = useUserData();
-  const { productsState } = useProduct();
-  const [cart, setCart] = useState([]);
+  const {
+    authState: { token, userInfo },
+  } = useAuth();
+  const {
+    dataState: { cart },
+    dataDispatch,
+  } = useData();
 
-  useEffect(async () => {
-    setCart(productsState.products.filter((product) => product.inCart));
-  }, [productsState]);
+  useEffect(() => {
+    getAllCartProducts({ token, dataDispatch });
+  }, []);
 
   return (
     <main className="my-3-5 w-100p">
       <h1 className="center-text">My Cart</h1>
-      {userDataState.cart.length === 0 ? (
+      {cart?.length === 0 ? (
         <p className="my-2 center-text">
           Your Cart is Empty!
           <Link to={routes.PRODUCTS_PAGE} className="link primary-text">
@@ -29,7 +34,7 @@ const CartPage = () => {
           <div className="cart-items">
             <div className="card m-1 mw-28r p-0-5">
               <h3 className="m-0-5">
-                Deliver To: {userDataState.firstName} {userDataState.lastName}
+                Deliver To: {userInfo.firstName} {userInfo.lastName}
               </h3>
               <p className="mx-0-5">
                 509 Baldeo Apartment, Queta Colony, New Ring Road, Nagpur -
