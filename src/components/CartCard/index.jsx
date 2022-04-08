@@ -2,18 +2,25 @@ import "./style.css";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
-import { useUserData, useProduct } from "../../context";
+import { useAuth, useData } from "../../context";
 import { cartHandler, wishlistHandler } from "../../utils/services";
+import { useWishlist } from "../../hooks";
 import { actionType } from "../../constants";
 
 const CartCard = ({ product }) => {
-  const { _id, img, name, album, price, mrp, cartQuantity, inWishlist } =
-    product;
+  const { _id, img, name, album, price, mrp } = product;
   const {
-    userDataState: { token },
-    userDataDispatch,
-  } = useUserData();
-  const { productsDispatch } = useProduct();
+    authState: { token },
+    authDispatch,
+  } = useAuth();
+  const {
+    dataState: {
+      cart: { cartQuantity },
+    },
+    dataDispatch,
+  } = useData();
+  const { inWishlist } = useWishlist({ product });
+
   const [disableWishlist, setDisableWishlist] = useState(false);
   const [disableCartDelete, setDisableCartDelete] = useState(false);
   const { INCREMENT_CART_QUANTITY, DECREMENT_CART_QUANTITY } =
@@ -28,26 +35,20 @@ const CartCard = ({ product }) => {
 
   const handleCartItemDeleteClick = async () => {
     setDisableCartDelete(true);
-    await cartHandler(_id, "DELETE", token, productsDispatch, userDataDispatch);
+    await cartHandler(_id, "DELETE", token, dataDispatch, authDispatch);
     setDisableCartDelete(false);
   };
 
   const handleMoveToWishlistClick = async () => {
     setDisableWishlist(true);
-    await cartHandler(_id, "DELETE", token, productsDispatch, userDataDispatch);
+    await cartHandler(_id, "DELETE", token, dataDispatch, authDispatch);
     if (!inWishlist)
-      await wishlistHandler(
-        _id,
-        "POST",
-        token,
-        productsDispatch,
-        userDataDispatch
-      );
+      await wishlistHandler(_id, "POST", token, dataDispatch, authDispatch);
     setDisableWishlist(false);
   };
 
   const handleCartQtyChangeClick = (type) => {
-    productsDispatch({
+    dataDispatch({
       type: type,
       payload: _id,
     });
