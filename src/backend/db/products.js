@@ -16,9 +16,6 @@ export const products = [
     category: "clothes",
     album: "Red",
     rating: 5,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
   {
     _id: uuid(),
@@ -29,9 +26,6 @@ export const products = [
     category: "accessories",
     album: "1989",
     rating: 4,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
   {
     _id: uuid(),
@@ -42,9 +36,6 @@ export const products = [
     category: "Music",
     album: "Fearless",
     rating: 3,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
   {
     _id: uuid(),
@@ -55,9 +46,6 @@ export const products = [
     category: "mobile-covers",
     album: "Lover",
     rating: 4,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
   {
     _id: uuid(),
@@ -68,9 +56,6 @@ export const products = [
     category: "clothes",
     album: "Reputation",
     rating: 2,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
   {
     _id: uuid(),
@@ -81,8 +66,5 @@ export const products = [
     category: "Music",
     album: "Red",
     rating: 5,
-    inWishlist: false,
-    inCart: false,
-    cartQuantity: 1,
   },
 ];
