@@ -1,67 +1,30 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
-import { useData } from "../context/";
-import { authHandler } from "../utils/services";
+import { signupHandler } from "../utils/services";
 import { routes } from "../constants";
 
 const SignupPage = () => {
-  const [signupCredentials, setSignupCredentials] = useState({
+  const [credentials, setCredentials] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
   });
 
-  const { firstName, lastName, email, password } = signupCredentials;
+  const { firstName, lastName, email, password } = credentials;
 
-  const handleInputChange = (event, property) => {
-    switch (property) {
-      case "firstName":
-        setSignupCredentials((creds) => ({
-          ...creds,
-          firstName: event.target.value,
-        }));
-        break;
-      case "lastName":
-        setSignupCredentials((creds) => ({
-          ...creds,
-          lastName: event.target.value,
-        }));
-        break;
-      case "email":
-        setSignupCredentials((creds) => ({
-          ...creds,
-          email: event.target.value,
-        }));
-        break;
-      case "password":
-        setSignupCredentials((creds) => ({
-          ...creds,
-          password: event.target.value,
-        }));
-        break;
-    }
+  const handleInputChange = (event) => {
+    setCredentials({
+      [event.target.name]: event.target.value,
+    });
   };
 
   const navigate = useNavigate();
-  const { dataDispatch } = useData();
 
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
-    if (
-      firstName !== "" &&
-      lastName !== "" &&
-      email !== "" &&
-      password !== ""
-    ) {
-      const res = await authHandler(
-        { ...signupCredentials },
-        "signup",
-        dataDispatch
-      );
-      if (res.status === 201) navigate(routes.PRODUCTS_PAGE);
-    }
+    signupHandler({ credentials, navigate });
   };
 
   return (
@@ -75,7 +38,7 @@ const SignupPage = () => {
             minLength={3}
             placeholder="Jon"
             value={firstName}
-            property="firstName"
+            name="firstName"
             changeHandler={handleInputChange}
           />
 
@@ -85,7 +48,7 @@ const SignupPage = () => {
             minLength={3}
             placeholder="Doe"
             value={lastName}
-            property="lastName"
+            name="lastName"
             changeHandler={handleInputChange}
           />
 
@@ -94,7 +57,7 @@ const SignupPage = () => {
             type="email"
             value={email}
             placeholder="abc@gmail.com"
-            property="email"
+            name="email"
             changeHandler={handleInputChange}
           />
 
@@ -103,7 +66,7 @@ const SignupPage = () => {
             type="password"
             value={password}
             placeholder="minimum 8 characters"
-            property="password"
+            name="password"
             changeHandler={handleInputChange}
           />
 

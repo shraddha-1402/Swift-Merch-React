@@ -2,27 +2,21 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
 import { useData, useAuth } from "../context/";
-import { authHandler } from "../utils/services/";
+import { loginHandler } from "../utils/services/";
 import { routes } from "../constants";
 
 const LoginPage = () => {
-  const handleInputChange = (event, property) => {
-    property === "email"
-      ? setLoginCredentials((creds) => ({
-          ...creds,
-          email: event.target.value,
-        }))
-      : setLoginCredentials((creds) => ({
-          ...creds,
-          password: event.target.value,
-        }));
+  const handleInputChange = (event) => {
+    setCredentials({
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const [loginCredentials, setLoginCredentials] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
-  const { email, password } = loginCredentials;
+  const { email, password } = credentials;
 
   const navigate = useNavigate();
   const { authDispatch } = useAuth();
@@ -30,15 +24,12 @@ const LoginPage = () => {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-    if (email !== "" && password !== "") {
-      const res = await authHandler(
-        loginCredentials,
-        "login",
-        authDispatch,
-        dataDispatch
-      );
-      if (res.status === 200) navigate(routes.PRODUCTS_PAGE);
-    }
+    await loginHandler({
+      credentials,
+      authDispatch,
+      dataDispatch,
+      navigate,
+    });
   };
 
   return (
@@ -50,7 +41,7 @@ const LoginPage = () => {
             label="Email"
             type="email"
             value={email}
-            property="email"
+            name="email"
             changeHandler={handleInputChange}
           />
 
@@ -58,7 +49,7 @@ const LoginPage = () => {
             label="Password"
             type="password"
             value={password}
-            property="password"
+            name="password"
             changeHandler={handleInputChange}
           />
 
@@ -66,7 +57,7 @@ const LoginPage = () => {
             type="button"
             className="btn btn-outline-primary w-100p my-0-25 mt-1 text-bold-weight"
             onClick={() => {
-              setLoginCredentials({
+              setCredentials({
                 email: "test@gmail.com",
                 password: "test123",
               });
@@ -84,7 +75,7 @@ const LoginPage = () => {
         </form>
 
         <p className="sm-text my-0-5">
-          Do not have an account yet?{" "}
+          Do not have an account yet?
           <Link
             to={routes.SIGNUP_PAGE}
             className="link primary-text hover-underline"
