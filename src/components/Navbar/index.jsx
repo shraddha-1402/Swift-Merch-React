@@ -8,13 +8,16 @@ import {
   FaUser,
   FaUserCheck,
 } from "react-icons/fa";
-import { useUserData } from "../../context";
+import { useAuth, useData } from "../../context";
 import { routes } from "../../constants";
 
 const Navbar = () => {
   const {
-    userDataState: { token, wishlist, cart },
-  } = useUserData();
+    authState: { token },
+  } = useAuth();
+  const {
+    dataState: { cart, wishlist },
+  } = useData();
   const navigate = useNavigate();
 
   return (
@@ -48,7 +51,7 @@ const Navbar = () => {
             <FaHeart onClick={() => navigate(routes.WISHLIST_PAGE)} />
             {token && (
               <span className="pos-abs badge icon-badge sm-badge">
-                {wishlist.length}
+                {wishlist?.length}
               </span>
             )}
           </li>
@@ -56,7 +59,7 @@ const Navbar = () => {
             <FaShoppingCart onClick={() => navigate(routes.CART_PAGE)} />
             {token && (
               <span className="pos-abs badge icon-badge sm-badge">
-                {cart.length}
+                {cart?.length}
               </span>
             )}
           </li>
