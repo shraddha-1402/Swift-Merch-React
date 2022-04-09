@@ -3,7 +3,7 @@
 }
 
 .filter-sidebar {
-  flex-basis: 16rem;
+  min-width: 16rem;
   padding: 0 2rem;
   margin-top: 1rem;
   overflow: auto;
@@ -23,7 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 18rem));
   justify-content: center;
-  align-items: start;
+  align-items: stretch;
 }
 
 .info-text {
