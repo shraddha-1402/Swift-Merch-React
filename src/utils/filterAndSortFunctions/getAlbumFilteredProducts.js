@@ -1,11 +1,11 @@
-const getAlbumFilteredProducts = (albums, productList) => {
+const getAlbumFilteredProducts = ({ albums, products }) => {
   let filterApplied = false;
   let newProductList = albums.reduce((acc, album) => {
     if (album.status) {
       filterApplied = true;
       return [
         ...acc,
-        ...productList.filter(
+        ...products.filter(
           (product) => product.album.toUpperCase() === album.type
         ),
       ];
@@ -13,7 +13,7 @@ const getAlbumFilteredProducts = (albums, productList) => {
     return acc;
   }, []);
 
-  return filterApplied ? newProductList : productList;
+  return filterApplied ? newProductList : products;
 };
 
 export { getAlbumFilteredProducts };

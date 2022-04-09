@@ -6,28 +6,28 @@ import {
   getPriceRangeFilteredProducts,
 } from "./index";
 
-const applyFilterAndSort = (state, productsState) => {
-  let filteredProductList = getCategoryFilteredProducts(
-    state.categories,
-    productsState.products
-  );
-  filteredProductList = getAlbumFilteredProducts(
-    state.albums,
-    filteredProductList
-  );
-  filteredProductList = getRatingFilteredProducts(
-    state.rating,
-    filteredProductList
-  );
-  filteredProductList = getPriceRangeFilteredProducts(
-    state.priceRange,
-    filteredProductList
-  );
+const applyFilterAndSort = ({ state, products }) => {
+  let filteredProductList = getCategoryFilteredProducts({
+    categories: state.categories,
+    products,
+  });
+  filteredProductList = getAlbumFilteredProducts({
+    albums: state.albums,
+    products: filteredProductList,
+  });
+  filteredProductList = getRatingFilteredProducts({
+    rating: state.rating,
+    products: filteredProductList,
+  });
+  filteredProductList = getPriceRangeFilteredProducts({
+    priceRange: state.priceRange,
+    products: filteredProductList,
+  });
 
-  const sortedProductList = getPriceSortedProducts(
-    state.sortByPrice,
-    filteredProductList
-  );
+  const sortedProductList = getPriceSortedProducts({
+    sortByPrice: state.sortByPrice,
+    products: filteredProductList,
+  });
 
   return sortedProductList;
 };

@@ -1,5 +1,5 @@
-const getPriceRangeFilteredProducts = (priceRange, productList) => {
-  const newProductList = productList.filter(
+const getPriceRangeFilteredProducts = ({ priceRange, products }) => {
+  const newProductList = products.filter(
     (product) => priceRange >= product.price
   );
 

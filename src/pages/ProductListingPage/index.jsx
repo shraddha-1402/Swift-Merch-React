@@ -7,7 +7,9 @@ import { actionType } from "../../constants";
 
 const ProductListingPage = () => {
   const { filterState, filterDispatch } = useFilter();
-  const { dataState } = useData();
+  const {
+    dataState: { products },
+  } = useData();
 
   const [showBottombar, setShowBottombar] = useState({
     showSortByTab: false,
@@ -21,7 +23,10 @@ const ProductListingPage = () => {
     };
   }, []);
 
-  const filteredSortedProducts = applyFilterAndSort(filterState, dataState);
+  const filteredSortedProducts = applyFilterAndSort({
+    state: filterState,
+    products,
+  });
 
   return (
     <main className="flex-row main-content">

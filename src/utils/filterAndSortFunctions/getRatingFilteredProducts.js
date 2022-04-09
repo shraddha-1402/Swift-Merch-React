@@ -1,7 +1,7 @@
-const getRatingFilteredProducts = (rating, productList) => {
+const getRatingFilteredProducts = ({ rating, products }) => {
   return rating
-    ? productList.filter((product) => product.rating > rating)
-    : productList;
+    ? products.filter((product) => product.rating > rating)
+    : products;
 };
 
 export { getRatingFilteredProducts };
