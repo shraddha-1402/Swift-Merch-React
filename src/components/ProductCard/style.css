@@ -15,3 +15,7 @@
 .filled-heart {
   color: var(--primary-color);
 }
+
+.img-container-sekeleton {
+  aspect-ratio: 256/260;
+}

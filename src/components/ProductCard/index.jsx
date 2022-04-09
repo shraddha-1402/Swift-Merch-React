@@ -6,15 +6,18 @@ import { FaCartPlus, FaHeart, FaStar, FaArrowRight } from "react-icons/fa";
 import { routes } from "../../constants";
 import { useData, useAuth } from "../../context";
 import { useCart, useWishlist } from "../../hooks";
-import { wishlistHandler, cartHandler } from "../../utils/services";
+import {
+  addToWishlist,
+  deleteFromWishlist,
+  addToCart,
+} from "../../utils/services";
 
 const ProductCard = ({ product }) => {
-  const { _id, img, name, price, mrp, album, rating } = product;
+  const { img, name, price, mrp, album, rating } = product;
   const { inWishlist } = useWishlist({ product });
   const { inCart } = useCart({ product });
   const {
     authState: { token },
-    authDispatch,
   } = useAuth();
   const { dataDispatch } = useData();
   const navigate = useNavigate();
@@ -31,23 +34,22 @@ const ProductCard = ({ product }) => {
   const handleWishlistClick = async () => {
     setDisableWishlist(true);
     if (token === null || token === "") navigate(routes.LOGIN_PAGE);
-    else if (inWishlist) {
-      await wishlistHandler(_id, "DELETE", token, dataDispatch, authDispatch);
-    } else
-      await wishlistHandler(_id, "POST", token, dataDispatch, authDispatch);
+    else if (inWishlist)
+      await deleteFromWishlist({ token, product, dataDispatch });
+    else await addToWishlist({ token, product, dataDispatch });
     setDisableWishlist(false);
   };
 
   const handleCartClick = async () => {
     setDisableCartAdd(true);
     if (token === null || token === "") navigate(routes.LOGIN_PAGE);
-    else await cartHandler(_id, "POST", token, dataDispatch, authDispatch);
+    else await addToCart({ token, product, dataDispatch });
     setDisableCartAdd(false);
   };
 
   return (
     <div className="card m-1 mw-16r">
-      <div className="pos-rel">
+      <div className="pos-rel img-container-sekeleton">
         <button
           className="pos-abs card-badge-left xs-icon-bg icon icon-btn"
           onClick={handleWishlistClick}
