@@ -11,3 +11,11 @@
   color: var(--primary-color);
   transition: all 0.1s ease;
 }
+
+.catgory-card {
+  max-width: 16rem;
+  min-width: 16rem;
+  min-height: 16rem;
+  position: relative;
+  cursor: pointer;
+}

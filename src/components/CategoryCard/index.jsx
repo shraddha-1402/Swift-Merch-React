@@ -14,12 +14,12 @@ const CategoryCard = ({ categoryDetails }) => {
     navigate(routes.PRODUCTS_PAGE);
     filterDispatch({
       type: actionType.FILTER_ACTIONS.FILTER_BY_CATEGORIES,
-      payload: filterName,
+      payload: { category: filterName },
     });
   };
 
   return (
-    <div className="card mw-16r pos-rel" onClick={handleCategoryCardClick}>
+    <div className="card catgory-card" onClick={handleCategoryCardClick}>
       <img src={imgUrl} alt={imgAlt} className="card-img responsive-img" />
       <h3 className="pos-abs featured-product-text">{category}</h3>
     </div>
