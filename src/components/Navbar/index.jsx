@@ -47,16 +47,22 @@ const Navbar = () => {
               <FaUser className="xs-icon" />
             )}
           </li>
-          <li className="icon xs-icon pos-rel">
-            <FaHeart onClick={() => navigate(routes.WISHLIST_PAGE)} />
+          <li className="xs-icon pos-rel">
+            <FaHeart
+              className="curr-pointer"
+              onClick={() => navigate(routes.WISHLIST_PAGE)}
+            />
             {!!token && (
               <span className="pos-abs badge icon-badge sm-badge">
                 {wishlist?.length}
               </span>
             )}
           </li>
-          <li className="icon xs-icon pos-rel">
-            <FaShoppingCart onClick={() => navigate(routes.CART_PAGE)} />
+          <li className="xs-icon pos-rel">
+            <FaShoppingCart
+              className="curr-pointer"
+              onClick={() => navigate(routes.CART_PAGE)}
+            />
             {!!token && (
               <span className="pos-abs badge icon-badge sm-badge">
                 {cart?.length}
