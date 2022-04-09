@@ -13,7 +13,6 @@ const ProfilePage = () => {
 
   const handleLogoutClick = () => {
     authDispatch({ type: actionType.USER_ACTION.USER_LOGOUT });
-
     navigate(routes.HOME_PAGE);
   };
 
