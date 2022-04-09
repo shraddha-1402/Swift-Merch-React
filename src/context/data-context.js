@@ -4,14 +4,17 @@ import axios from "axios";
 import { dataReducer } from "../reducer";
 import { actionType } from "../constants";
 
-const DataContext = createContext();
+const defaultDataState = {
+  products: [],
+  wishlist: [],
+  cart: [],
+};
+
+const DataContext = createContext(defaultDataState);
+const useData = () => useContext(DataContext);
 
 const DataProvider = ({ children }) => {
-  const [dataState, dataDispatch] = useReducer(dataReducer, {
-    products: [],
-    wishlist: [],
-    cart: [],
-  });
+  const [dataState, dataDispatch] = useReducer(dataReducer, defaultDataState);
 
   useEffect(() => {
     (async () => {
@@ -35,7 +38,5 @@ const DataProvider = ({ children }) => {
 DataProvider.propTypes = {
   children: PropTypes.any,
 };
-
-const useData = () => useContext(DataContext);
 
 export { useData, DataProvider };
