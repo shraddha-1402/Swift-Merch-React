@@ -1,11 +1,5 @@
-const filterByCategory = [
-  "Music",
-  "Clothes",
-  "Accessories",
-  "Tshirt",
-  "Mobile_Cover",
-];
-const filterByAlbum = ["Fearless", "Red", "1989", "Reputation", "Lover"];
+const filterByCategory = ["Music", "Clothes", "Accessories", "Mobile_Cover"];
+const filterByAlbum = ["Fearless", "Red", "Folklore", "Evermore", "Lover"];
 const filterByRating = [4, 3, 2, 1];
 
 const sortingOptions = ["High_to_Low", "Low_to_High"];
