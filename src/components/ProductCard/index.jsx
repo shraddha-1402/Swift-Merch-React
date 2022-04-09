@@ -48,35 +48,33 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="card m-1 mw-16r flex-col justify-spc-bet">
-      <div>
-        <div className="pos-rel img-container-sekeleton">
-          <button
-            className="pos-abs card-badge-left xs-icon-bg icon icon-btn"
-            onClick={handleWishlistClick}
-            disabled={disableWishlist}
-          >
-            <FaHeart
-              className={`wishlist-btn ${inWishlist ? "filled-heart" : ""} `}
-            />
-          </button>
-          <span className="rating-badge flex-row align-center gap-0-25">
-            <span>{rating}</span>
-            <FaStar className="rating-checked" />
+    <div className="card m-1 mw-16r">
+      <div className="pos-rel img-container-sekeleton">
+        <button
+          className="pos-abs card-badge-left xs-icon-bg icon icon-btn"
+          onClick={handleWishlistClick}
+          disabled={disableWishlist}
+        >
+          <FaHeart
+            className={`wishlist-btn ${inWishlist ? "filled-heart" : ""} `}
+          />
+        </button>
+        <span className="rating-badge flex-row align-center gap-0-25">
+          <span>{rating}</span>
+          <FaStar className="rating-checked" />
+        </span>
+        <img src={img} alt="cd-img" className="card-img responsive-img" />
+      </div>
+      <div className="flex-col gap-0-25 m-0-5">
+        <p className="text-bold-weight text-ellipsis">{name}</p>
+        <p className="sm-text">{album} Album</p>
+        <h4>
+          Rs. {price}
+          <span className="text-line-through text-light-weight mx-0-5">
+            Rs. {mrp}
           </span>
-          <img src={img} alt="cd-img" className="card-img responsive-img" />
-        </div>
-        <div className="flex-col gap-0-25 m-0-5">
-          <p className="text-bold-weight">{name}</p>
-          <p className="sm-text">{album} Album</p>
-          <h4>
-            Rs. {price}
-            <span className="text-line-through text-light-weight mx-0-5">
-              Rs. {mrp}
-            </span>
-            <span className="primary-text">66% Off </span>
-          </h4>
-        </div>
+          <span className="primary-text">66% Off </span>
+        </h4>
       </div>
       <div className="flex-row">
         {inCart ? (

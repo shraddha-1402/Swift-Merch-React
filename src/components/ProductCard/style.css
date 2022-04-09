@@ -19,3 +19,9 @@
 .img-container-sekeleton {
   aspect-ratio: 256/260;
 }
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
