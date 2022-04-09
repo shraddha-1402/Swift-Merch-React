@@ -12,12 +12,14 @@ const filterReducer = (state, action) => {
     RESET_FILTER,
   } = FILTER_ACTIONS;
 
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case FILTER_BY_CATEGORIES:
       return {
         ...state,
         categories: state.categories.map((category) =>
-          category.type === action.payload.toUpperCase()
+          category.type === payload.category.toUpperCase()
             ? { ...category, status: !category.status }
             : category
         ),
@@ -26,7 +28,7 @@ const filterReducer = (state, action) => {
       return {
         ...state,
         albums: state.albums.map((album) =>
-          album.type === action.payload.toUpperCase()
+          album.type === payload.albums.toUpperCase()
             ? { ...album, status: !album.status }
             : album
         ),
@@ -34,17 +36,17 @@ const filterReducer = (state, action) => {
     case FILTER_BY_RATING:
       return {
         ...state,
-        rating: action.payload,
+        rating: payload.rating,
       };
     case FILTER_BY_PRICE_RANGE:
       return {
         ...state,
-        priceRange: action.payload,
+        priceRange: payload.priceRange,
       };
     case SORT_BY_PRICE:
       return {
         ...state,
-        sortByPrice: action.payload,
+        sortByPrice: payload.sortByPrice,
       };
     case RESET_SORT:
       return {

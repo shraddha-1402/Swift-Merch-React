@@ -28,11 +28,13 @@ const loginHandler = async ({
       });
       dataDispatch({
         type: SET_WISHLIST,
-        payload: data.foundUser.wishlist,
+        payload: {
+          wishlist: data.foundUser.wishlist,
+        },
       });
       dataDispatch({
         type: SET_CART,
-        payload: data.foundUser.cart,
+        payload: { cart: data.foundUser.cart },
       });
       navigate(routes.PRODUCTS_PAGE);
     } else throw new Error(`${statusText} ${status}`);
