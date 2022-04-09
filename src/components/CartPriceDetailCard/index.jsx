@@ -6,8 +6,8 @@ import { FaTag } from "react-icons/fa";
 const CartPriceDetailCard = ({ cart }) => {
   const priceDetail = cart.reduce(
     (acc, curr) => ({
-      totalAmount: acc.totalAmount + curr.price * curr.cartQuantity,
-      totalMRP: acc.totalMRP + curr.mrp * curr.cartQuantity,
+      totalAmount: acc.totalAmount + curr.price * curr.qty,
+      totalMRP: acc.totalMRP + curr.mrp * curr.qty,
     }),
     {
       totalAmount: 0,
