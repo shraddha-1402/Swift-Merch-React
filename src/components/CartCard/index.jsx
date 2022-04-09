@@ -6,7 +6,7 @@ import { useAuth, useData } from "../../context";
 import {
   changeCartQuantity,
   deleteFromCart,
-  addToCart,
+  addToWishlist,
 } from "../../utils/services";
 import { useWishlist } from "../../hooks";
 import { actionType } from "../../constants";
@@ -21,6 +21,7 @@ const CartCard = ({ product }) => {
 
   const [disableWishlist, setDisableWishlist] = useState(false);
   const [disableCartDelete, setDisableCartDelete] = useState(false);
+
   const { INCREMENT, DECREMENT } = actionType.DATA;
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const CartCard = ({ product }) => {
   const handleMoveToWishlistClick = async () => {
     setDisableWishlist(true);
     await deleteFromCart({ token, product, dataDispatch });
-    if (!inWishlist) await addToCart({ token, dataDispatch, product });
+    if (!inWishlist) await addToWishlist({ token, dataDispatch, product });
     setDisableWishlist(false);
   };
 
