@@ -48,7 +48,7 @@ const SortComponent = ({ showBottombar, setShowBottombar }) => {
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.SORT_BY_PRICE,
-                        payload: sortType.toUpperCase(),
+                        payload: { sortByPrice: sortType.toUpperCase() },
                       });
                     }}
                   />

@@ -53,7 +53,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
               if (event.target.value >= 200)
                 filterDispatch({
                   type: actionType.FILTER_ACTIONS.FILTER_BY_PRICE_RANGE,
-                  payload: event.target.value,
+                  payload: { priceRange: event.target.value },
                 });
             }}
           />
@@ -77,7 +77,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_CATEGORIES,
-                        payload: filter,
+                        payload: { category: filter },
                       });
                     }}
                   />
@@ -104,7 +104,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_ALBUMS,
-                        payload: filter,
+                        payload: { albums: filter },
                       });
                     }}
                   />
@@ -132,7 +132,7 @@ const FilterComponent = ({ showBottombar, setShowBottombar }) => {
                     onChange={() => {
                       filterDispatch({
                         type: actionType.FILTER_ACTIONS.FILTER_BY_RATING,
-                        payload: productRating,
+                        payload: { rating: productRating },
                       });
                     }}
                   />
