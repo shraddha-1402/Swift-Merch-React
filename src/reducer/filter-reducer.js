@@ -1,16 +1,17 @@
 import { actionType, filterByAlbum, filterByCategory } from "../constants";
 
 const filterReducer = (state, action) => {
-  const { FILTER_ACTIONS } = actionType;
   const {
-    FILTER_BY_CATEGORIES,
-    FILTER_BY_ALBUMS,
-    FILTER_BY_RATING,
-    FILTER_BY_PRICE_RANGE,
-    SORT_BY_PRICE,
-    RESET_SORT,
-    RESET_FILTER,
-  } = FILTER_ACTIONS;
+    FILTER_ACTIONS: {
+      FILTER_BY_CATEGORIES,
+      FILTER_BY_ALBUMS,
+      FILTER_BY_RATING,
+      FILTER_BY_PRICE_RANGE,
+      SORT_BY_PRICE,
+      RESET_SORT,
+      RESET_FILTER,
+    },
+  } = actionType;
 
   const { type, payload } = action;
 
