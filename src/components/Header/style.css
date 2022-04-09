@@ -1,3 +1,6 @@
+.header {
+  aspect-ratio: 75/32;
+}
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -33,6 +36,10 @@
 }
 
 @media (max-width: 600px) {
+  .header {
+    aspect-ratio: 25/32;
+  }
+
   .hero {
     grid-template-columns: 1fr;
   }

@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="pos-rel">
+    <header className="pos-rel header">
       <div className="hero desktop-hero">
         <img src={fearlessHeroImg} alt="hero-img" className="responsive-img" />
         <img src={evermoreHeroImg} alt="hero-img" className="responsive-img" />
