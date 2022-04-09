@@ -39,7 +39,7 @@ const addToWishlist = async ({ token, product, dataDispatch }) => {
 
 const deleteFromWishlist = async ({ token, product, dataDispatch }) => {
   try {
-    const { data, status, statusText } = await axios.post(
+    const { data, status, statusText } = await axios.delete(
       `/api/user/wishlist/${product._id}`,
       { headers: { authorization: token } }
     );
