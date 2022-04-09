@@ -9,9 +9,7 @@ const useWishlist = ({ product }) => {
   } = useData();
 
   useEffect(() => {
-    () => {
-      setInWishlist(wishlist?.find((curr) => curr._id === product._id));
-    };
+    setInWishlist(wishlist?.find((curr) => curr._id === product._id));
   }, [product, wishlist]);
 
   return { inWishlist };

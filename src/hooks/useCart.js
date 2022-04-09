@@ -9,9 +9,7 @@ const useCart = ({ product }) => {
   } = useData();
 
   useEffect(() => {
-    () => {
-      setInCart(cart?.find((curr) => curr._id === product._id));
-    };
+    setInCart(cart?.find((curr) => curr._id === product._id));
   }, [product, cart]);
 
   return { inCart };
