@@ -1,6 +1,6 @@
 import "./style.css";
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaHeart,
   FaSearch,
@@ -8,8 +8,8 @@ import {
   FaUser,
   FaUserCheck,
 } from "react-icons/fa";
-import { useAuth, useData } from "../../context";
-import { routes } from "../../constants";
+import { useAuth, useData, useFilter } from "../../context";
+import { actionType, routes } from "../../constants";
 
 const Navbar = () => {
   const {
@@ -18,7 +18,19 @@ const Navbar = () => {
   const {
     dataState: { cart, wishlist },
   } = useData();
+  const { filterDispatch } = useFilter();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearch = (e) => {
+    if (pathname !== routes.PRODUCTS_PAGE) navigate(routes.PRODUCTS_PAGE);
+    console.log(e.target.value);
+    filterDispatch({
+      type: actionType.FILTER_ACTIONS.SEARCH_BY_NAME,
+      payload: { searchText },
+    });
+  };
 
   return (
     <nav className="pos-sticky-t0 z-1">
@@ -35,6 +47,9 @@ const Navbar = () => {
               id="search-products"
               className="nav-search-input"
               placeholder="search products"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyUpCapture={handleSearch}
             />
             <button className="nav-search-btn">
               <FaSearch />

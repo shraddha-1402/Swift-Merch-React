@@ -24,6 +24,7 @@ const defaultFilterState = {
   rating: 0,
   priceRange: 1000,
   sortByPrice: 0,
+  searchText: "",
 };
 
 const routes = {
@@ -55,6 +56,7 @@ const actionType = {
     FILTER_BY_RATING: "FILTER_BY_RATING",
     FILTER_BY_PRICE_RANGE: "FILTER_BY_PRICE_RANGE",
     SORT_BY_PRICE: "SORT_BY_PRICE",
+    SEARCH_BY_NAME: "SEARCH_BY_NAME",
     RESET_SORT: "RESET_SORT",
     RESET_FILTER: "RESET_FILTER",
   },

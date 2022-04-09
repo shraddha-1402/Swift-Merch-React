@@ -8,6 +8,7 @@ const filterReducer = (state, action) => {
       FILTER_BY_RATING,
       FILTER_BY_PRICE_RANGE,
       SORT_BY_PRICE,
+      SEARCH_BY_NAME,
       RESET_SORT,
       RESET_FILTER,
     },
@@ -48,6 +49,12 @@ const filterReducer = (state, action) => {
       return {
         ...state,
         sortByPrice: payload.sortByPrice,
+      };
+    case SEARCH_BY_NAME:
+      console.log(payload.searchText);
+      return {
+        ...state,
+        searchText: payload.searchText,
       };
     case RESET_SORT:
       return {

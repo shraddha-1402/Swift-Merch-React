@@ -1,3 +1,4 @@
+import { getProductsBySearchText } from "./getProductsBySearchText";
 import {
   getAlbumFilteredProducts,
   getCategoryFilteredProducts,
@@ -21,6 +22,13 @@ const applyFilterAndSort = ({ state, products }) => {
   });
   filteredProductList = getPriceRangeFilteredProducts({
     priceRange: state.priceRange,
+    products: filteredProductList,
+  });
+
+  console.log(filteredProductList);
+
+  filteredProductList = getProductsBySearchText({
+    searchText: state.searchText,
     products: filteredProductList,
   });
 
