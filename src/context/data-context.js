@@ -20,7 +20,7 @@ const DataProvider = ({ children }) => {
         dataDispatch({
           type: actionType.DATA.UPDATE_PRODUCTS,
           payload: {
-            products: { products: response.data.products },
+            products: response.data.products,
           },
         });
     })();
