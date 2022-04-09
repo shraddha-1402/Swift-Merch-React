@@ -6,13 +6,11 @@ import { actionType } from "../constants";
 
 const DataContext = createContext();
 
-const localStorageData = JSON.parse(localStorage.getItem("ecommData"));
-
 const DataProvider = ({ children }) => {
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     products: [],
-    wishlist: localStorageData ? localStorageData.userInfo?.wishlist : [],
-    cart: localStorageData ? localStorageData.userInfo?.cart : [],
+    wishlist: [],
+    cart: [],
   });
 
   useEffect(() => {
@@ -21,7 +19,9 @@ const DataProvider = ({ children }) => {
       if (response.status === 200)
         dataDispatch({
           type: actionType.DATA.UPDATE_PRODUCTS,
-          payload: response.data.products,
+          payload: {
+            products: { products: response.data.products },
+          },
         });
     })();
   }, []);
