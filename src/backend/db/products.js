@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import hoodie1 from "../../assets/products/hoodies/hoodie1.png";
 import hoodie2 from "../../assets/products/hoodies/hoodie2.png";
 import hoodie3 from "../../assets/products/hoodies/hoodie3.webp";
@@ -21,7 +20,7 @@ import music5 from "../../assets/products/music/music5.webp";
 
 export const products = [
   {
-    _id: uuid(),
+    _id: 1,
     img: mobileCover1,
     name: "TS Lover Album Phone Case",
     price: 300,
@@ -34,7 +33,7 @@ export const products = [
       "Pink phone case featuring photo of Taylor Swift and 'TS' logo. TPU phone case. Compatible with iPhone 12, 12 mini, 12 pro, 12 pro max, 13, 13 mini, 13 pro, 13 pro max",
   },
   {
-    _id: uuid(),
+    _id: 2,
     img: hoodie1,
     name: "Our love lasts so long Hoodie",
     price: 200,
@@ -47,7 +46,7 @@ export const products = [
       "Faded storm blue long sleeve hoodie with extra-wide drawcord pulls, side seam slits and contrast rib knit insets at the shoulders. Exposed stitching at shoulders and raw edge distressed seams at hem with front featuring song lyric 'passed down like folk songs our love lasts so long' and back featuring song title 'seven' and song lyric 'I used to scream ferociously any time I wanted.'",
   },
   {
-    _id: uuid(),
+    _id: 3,
     img: music2,
     name: "Evermore Album Deluxe Edition Vinyl",
     price: 300,
@@ -60,7 +59,7 @@ export const products = [
       "15 songs + 2 bonus tracks 'right where you left me' and 'its time to go' deluxe album lyric booklet, including full album lyrics, 6 unique photos and artwork",
   },
   {
-    _id: uuid(),
+    _id: 4,
     img: hoodie2,
     name: "All Too Well Gray Hoodie",
     price: 300,
@@ -73,7 +72,7 @@ export const products = [
       "Heather gray hoodie featuring tree and scarf graphic and 'All Too Well' printed on front.",
   },
   {
-    _id: uuid(),
+    _id: 5,
     img: accessesories1,
     name: "Lover Album Scrunchies",
     price: 300,
@@ -86,7 +85,7 @@ export const products = [
       "Set of pink and blue velvet scrunchies with 'TS' logo repeat print.",
   },
   {
-    _id: uuid(),
+    _id: 6,
     img: mobileCover2,
     name: "The “in the trees” phone case",
     price: 300,
@@ -99,7 +98,7 @@ export const products = [
       "Phone case featuring album cover artwork and album name. tpu phone case. compatible with iphone 11, 11 pro, 11 pro max, xs, xs max, 7/8, 7/8+, and XR.",
   },
   {
-    _id: uuid(),
+    _id: 7,
     img: music3,
     name: "RED (Taylor's Version) CD",
     price: 300,
@@ -112,7 +111,7 @@ export const products = [
       "30 songs, including 9 songs from the Vault, exclusive album booklet with never before seen photos, artwork and lyrics for the 9 songs from the Vault",
   },
   {
-    _id: uuid(),
+    _id: 8,
     img: hoodie3,
     name: "Your Ivy Grows Crewneck",
     price: 400,
@@ -125,7 +124,7 @@ export const products = [
       "Green crewneck featuring image of Taylor Swift and ivy graphic with 'Taylor Swift' and 'My palm fits in the palm of your freezing hand, taking mine, but it's been promised to another, I can't stop you putting roots in my dreamland, my house of stone, your ivy grows and now I'm covered in you' song lyrics on front chest and ivy graphic on back.",
   },
   {
-    _id: uuid(),
+    _id: 9,
     img: music4,
     name: "Christmas Tree Farm Digital Single",
     price: 300,
@@ -138,7 +137,7 @@ export const products = [
       "If purchased, a digital copy of 'Christmas Tree Farm Digital Single' will be sent to the email address supplied at checkout on or about the date of purchase. digital downloads are delivered as MP3 44.1kHz/24-bit audio files.",
   },
   {
-    _id: uuid(),
+    _id: 10,
     img: music5,
     name: "The lakes digital single",
     price: 300,
@@ -151,7 +150,7 @@ export const products = [
       "If purchased, a digital copy of 'the lakes (original version)' will be sent to the email address supplied at checkout on or about the date of purchase. digital downloads are delivered as MP3 44.1kHz/24-bit audio files.",
   },
   {
-    _id: uuid(),
+    _id: 11,
     img: accessesories2,
     name: "Gold Rush Velvet Scrunchie",
     price: 300,
@@ -163,7 +162,7 @@ export const products = [
     description: "Gold velvet bow scrunchie with 'Taylor Swift' woven label.",
   },
   {
-    _id: uuid(),
+    _id: 12,
     img: mobileCover3,
     name: "The “waiting by the phone” Phone Case",
     price: 300,
@@ -176,7 +175,7 @@ export const products = [
       "phone case featuring album cover artwork. tpu phone case. compatible with iphone 11, 11 pro, 11 pro max, xs, xs max, 12, 12 mini, 12 pro, 12 pro max and XR.",
   },
   {
-    _id: uuid(),
+    _id: 13,
     img: hoodie4,
     name: "Loving Him Was Red Hoodie",
     price: 300,
@@ -189,7 +188,7 @@ export const products = [
       "Gray Hoodie featuring 'Taylor Swift' printed on wearer's left front chest and 'Losing him was blue like I'd never known, missing him was dark gray, all alone, forgetting him was like trying to know somebody you never met, but loving him was red' song lyrics printed on right sleeve and 'Taylor Swift Red (Taylor's Version)' with live photo printed on back.",
   },
   {
-    _id: uuid(),
+    _id: 14,
     img: accessesories3,
     name: "The All Too Well Knit Scarf",
     price: 300,
@@ -202,7 +201,7 @@ export const products = [
       "Heather gray hoodie featuring tree and scarf graphic and 'All Too Well' printed on front.",
   },
   {
-    _id: uuid(),
+    _id: 15,
     img: hoodie5,
     name: "Beautiful Tragic Love Affair Crewneck",
     price: 700,
@@ -215,7 +214,7 @@ export const products = [
       "Black crewneck featuring photo of Taylor Swift printed on front.",
   },
   {
-    _id: uuid(),
+    _id: 16,
     img: music1,
     name: "Fearless (Taylor's Version) vinyl",
     price: 300,
@@ -228,7 +227,7 @@ export const products = [
       "Fearless (Taylor's Version) vinyl each vinyl album features: 27 songs, including 6 unreleased songs from the vault, including unique photos and artwork. 3 metallic gold color discs, each including a disc photo",
   },
   {
-    _id: uuid(),
+    _id: 17,
     img: hoodie6,
     name: "Life Was a Willow Hoodie",
     price: 800,
@@ -241,7 +240,7 @@ export const products = [
       "Green hoodie with 'Life Was a Willow' song lyrics on front chest, 'Taylor Swift' printed on wearer's left sleeve and photo of Taylor Swift printed on the back with 'the more that you say, the less I know wherever you stray, I follow, I’m begging for you to take my hand wreck my plans, that’s my man' song lyrics and design.",
   },
   {
-    _id: uuid(),
+    _id: 18,
     img: accessesories4,
     name: "RED Album Ring",
     price: 300,
@@ -254,7 +253,7 @@ export const products = [
       "Diamond-shaped nickel free copper alloy adjustable ring, electroplated in silver and plated with a rhodium finish, featuring a design of the word 'RED' cut out and detailed with inlaid CZ crystals and gorgeous scalloped edges. ",
   },
   {
-    _id: uuid(),
+    _id: 19,
     img: accessesories5,
     name: "Swifties Hair Ties",
     price: 300,
