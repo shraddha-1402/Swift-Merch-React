@@ -25,8 +25,6 @@ const applyFilterAndSort = ({ state, products }) => {
     products: filteredProductList,
   });
 
-  console.log(filteredProductList);
-
   filteredProductList = getProductsBySearchText({
     searchText: state.searchText,
     products: filteredProductList,
