@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useFilter, useData } from "../../context";
 import { applyFilterAndSort } from "../../utils/filterAndSortFunctions/applyFilterAndSort";
 import { SortComponent, FilterComponent, ProductCard } from "../../components";
+import { useDynamicTitle } from "../../hooks";
 import { actionType } from "../../constants";
 
 const ProductListingPage = () => {
@@ -10,6 +11,7 @@ const ProductListingPage = () => {
   const {
     dataState: { products },
   } = useData();
+  useDynamicTitle();
 
   const [showBottombar, setShowBottombar] = useState({
     showSortByTab: false,

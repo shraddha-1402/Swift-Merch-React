@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
 import { signupHandler } from "../utils/services";
+import { useDynamicTitle } from "../hooks";
 import { routes } from "../constants";
 
 const SignupPage = () => {
+  useDynamicTitle();
+
   const [credentials, setCredentials] = useState({
     firstName: "",
     lastName: "",

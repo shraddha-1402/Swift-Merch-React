@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Header, CategoryCard } from "../components";
+import { useDynamicTitle } from "../hooks";
 
 const HomePage = () => {
   const [featuredCategories, setFeaturedCategories] = useState([]);
+  useDynamicTitle();
 
   useEffect(() => {
     (async () => {

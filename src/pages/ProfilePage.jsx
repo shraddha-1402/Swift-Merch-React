@@ -1,9 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { actionType, routes } from "../constants";
+import { useDynamicTitle } from "../hooks";
 import { useAuth } from "../context";
 
 const ProfilePage = () => {
+  useDynamicTitle();
   const {
     authState: { userInfo },
     authDispatch,

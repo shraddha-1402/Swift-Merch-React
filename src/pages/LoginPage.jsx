@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { FormInput } from "../components";
 import { useData, useAuth } from "../context/";
 import { loginHandler } from "../utils/services/";
+import { useDynamicTitle } from "../hooks";
 import { routes } from "../constants";
 
 const LoginPage = () => {
+  useDynamicTitle();
   const handleInputChange = (event) => {
     setCredentials({
       [event.target.name]: event.target.value,

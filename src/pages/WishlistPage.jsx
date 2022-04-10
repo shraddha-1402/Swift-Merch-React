@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { useAuth, useData } from "../context/index";
 import { ProductCard } from "../components";
 import { routes } from "../constants";
+import { useDynamicTitle } from "../hooks";
 import { getAllWishlistProducts } from "../utils/services";
 
 const WishlistPage = () => {
+  useDynamicTitle();
   const {
     dataState: { wishlist },
     dataDispatch,

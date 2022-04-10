@@ -1,10 +1,11 @@
 import "./style.css";
 import React, { useEffect } from "react";
-import { useData, useAuth } from "../../context";
 import { Link } from "react-router-dom";
-import { CartCard, CartPriceDetailCard } from "../../components";
 import { routes } from "../../constants";
+import { useData, useAuth } from "../../context";
 import { getAllCartProducts } from "../../utils/services";
+import { useDynamicTitle } from "../../hooks";
+import { CartCard, CartPriceDetailCard } from "../../components";
 
 const CartPage = () => {
   const {
@@ -14,7 +15,7 @@ const CartPage = () => {
     dataState: { cart },
     dataDispatch,
   } = useData();
-
+  useDynamicTitle();
   useEffect(() => {
     getAllCartProducts({ token, dataDispatch });
   }, []);
