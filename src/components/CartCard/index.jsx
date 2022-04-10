@@ -1,6 +1,7 @@
 import "./style.css";
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
 import { useAuth, useData } from "../../context";
 import {
@@ -9,10 +10,11 @@ import {
   addToWishlist,
 } from "../../utils/services";
 import { useWishlist } from "../../hooks";
-import { actionType } from "../../constants";
+import { actionType, routes } from "../../constants";
 
 const CartCard = ({ product }) => {
-  const { img, name, album, price, mrp, qty } = product;
+  const { _id, img, name, album, price, mrp, qty } = product;
+  const navigate = useNavigate();
   const {
     authState: { token },
   } = useAuth();
@@ -47,7 +49,12 @@ const CartCard = ({ product }) => {
   return (
     <div className="card horizontal-card pos-rel">
       <div className="pos-rel flex-row align-center horizontal-card-img">
-        <img src={img} alt="cd-img" className="card-img responsive-img" />
+        <img
+          src={img}
+          alt="cd-img"
+          className="card-img responsive-img curr-pointer"
+          onClick={() => navigate(`${routes.PRODUCTS_PAGE}/${_id}`)}
+        />
       </div>
       <button
         className="icon-btn product-remove-btn pos-abs"

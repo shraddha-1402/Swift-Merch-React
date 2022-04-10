@@ -12,6 +12,7 @@ import {
   SignupPage,
   ProfilePage,
   CartPage,
+  SingleProduct,
 } from "./pages/";
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
       <Routes>
         <Route element={<HomePage />} path={routes.HOME_PAGE} />
         <Route element={<ProductListingPage />} path={routes.PRODUCTS_PAGE} />
+        <Route
+          element={<SingleProduct />}
+          path={`${routes.PRODUCTS_PAGE}/:productId`}
+        />
         <Route element={<LoginPage />} path={routes.LOGIN_PAGE} />
         <Route element={<SignupPage />} path={routes.SIGNUP_PAGE} />
         <Route

@@ -13,7 +13,7 @@ import {
 } from "../../utils/services";
 
 const ProductCard = ({ product }) => {
-  const { img, name, price, mrp, album, rating } = product;
+  const { _id, img, name, price, mrp, album, rating } = product;
   const { inWishlist } = useWishlist({ product });
   const { inCart } = useCart({ product });
   const {
@@ -63,7 +63,12 @@ const ProductCard = ({ product }) => {
           <span>{rating}</span>
           <FaStar className="rating-checked" />
         </span>
-        <img src={img} alt="cd-img" className="card-img responsive-img" />
+        <img
+          src={img}
+          alt="cd-img"
+          className="card-img responsive-img curr-pointer"
+          onClick={() => navigate(`${routes.PRODUCTS_PAGE}/${_id}`)}
+        />
       </div>
       <div className="flex-col gap-0-25 m-0-5">
         <p className="text-bold-weight text-ellipsis">{name}</p>
