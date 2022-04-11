@@ -6,3 +6,4 @@ export { SortComponent, FilterComponent } from "./FilterAndSortComponent";
 export { FormInput } from "./FormInput";
 export { CartCard } from "./CartCard";
 export { CartPriceDetailCard } from "./CartPriceDetailCard";
+export { AddressFormModal } from "./AddressFormModal";

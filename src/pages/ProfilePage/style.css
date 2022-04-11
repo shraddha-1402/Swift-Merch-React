@@ -1,0 +1,7 @@
+.account-tabs {
+  width: 100%;
+  min-width: 8rem;
+  text-align: center;
+  border: 1px solid var(--black);
+  padding: 0.5rem 1rem;
+}
