@@ -1,7 +1,12 @@
+.account-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  border: 1px solid var(--secondary-color);
+}
+
 .account-tabs {
   width: 100%;
-  min-width: 8rem;
   text-align: center;
-  border: 1px solid var(--black);
   padding: 0.5rem 1rem;
 }

@@ -1,6 +1,6 @@
 .horizontal-card {
   display: flex;
-  margin: 1rem;
+  margin: 1rem 0rem;
   max-width: 28rem;
 }
 

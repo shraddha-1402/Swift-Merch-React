@@ -17,16 +17,16 @@ const AddressFormModal = () => {
     toEdit,
   } = useAddress();
 
-  const handleCancelClick = () => {
-    setShowAddressForm(false);
-    setAddressInfo(defaultAddressState);
-  };
-
   const handleInputChange = (e) => {
     setAddressInfo((addressInfo) => ({
       ...addressInfo,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handleCancelClick = () => {
+    setShowAddressForm(false);
+    setAddressInfo(defaultAddressState);
   };
 
   const handleAddressFormSubmit = async (e) => {
@@ -35,12 +35,13 @@ const AddressFormModal = () => {
       await editAddress({ address: addressInfo, token, dataDispatch });
     else await addAddress({ address: addressInfo, token, dataDispatch });
     setShowAddressForm(false);
+    setAddressInfo(defaultAddressState);
   };
 
   return (
     !!showAddressForm && (
       <div className="modal-overlay">
-        <div className="modal-box">
+        <div className="modal-box mw-40r">
           <h2 className="my-0-5">
             {toEdit ? "Edit Address" : "Add New Address"}
           </h2>
@@ -49,7 +50,7 @@ const AddressFormModal = () => {
               className="input std-input my-0-5"
               type="text"
               name="name"
-              value={addressInfo?.name}
+              value={addressInfo.name}
               placeholder="Enter name"
               required
               onChange={handleInputChange}

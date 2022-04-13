@@ -1,7 +1,7 @@
 import "./style.css";
 import React from "react";
+import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { AddressFormModal } from "../../components";
 import { actionType, routes } from "../../constants";
 import { useAddress, useAuth, useData } from "../../context";
 import { deleteAddress } from "../../utils/services";
@@ -25,48 +25,46 @@ const ProfilePage = () => {
   };
 
   return (
-    <main className="flex-col align-center justify-center my-3-5">
-      <AddressFormModal />
+    <main className="flex-col align-center justify-center mw-28r my-2 mx-auto p-1">
+      <h1 className="mb-1">Account</h1>
 
-      <h1 className="m-1">Account</h1>
-
-      <div className="p-1 flex-col">
+      <div className="p-1 account-section">
         <div className="flex-row">
           <button className="account-tabs"> Profile </button>
           <button className="account-tabs"> Orders </button>
         </div>
 
-        <p className="flex-row justify-spc-bet my-1">
-          <span>Full Name:</span>
-          <span>
+        <div className="my-1">
+          <p className="my-0-5">
+            <span className="disp-inline-block w-30p mr-0-5">Full Name:</span>
             {firstName} {lastName}
-          </span>
-        </p>
-        <p className="my-1">Email: {email}</p>
-        <button className="btn btn-solid-danger" onClick={handleLogoutClick}>
-          Logout
-        </button>
+          </p>
+          <p className="my-0-5">
+            <span className="disp-inline-block w-30p mr-0-5">Email:</span>
+            {email}
+          </p>
+        </div>
+
         <button
           className="btn btn-outline-primary my-1"
           onClick={() => setShowAddressForm(true)}
         >
-          Add Address
+          <FaPlus /> Add Address
         </button>
 
         <ul className="list-style-none">
           {addresses?.map((address) => {
             return (
               <li key={address._id} className="card p-1 my-1">
-                <div className="flex-row align-baseline gap-0-5">
-                  <h3>{address.name}</h3>
-                  <p>{address.phone}</p>
-                </div>
+                <h3>{address.name}</h3>
                 <p>
                   {address.street}, {address.city}, {address.zipCode}
                 </p>
-                <div>
+                <p>Phone: {address.phone}</p>
+
+                <div className="flex-row gap-1 mt-1">
                   <button
-                    className="btn btn-outline-secondary"
+                    className="btn-solid-primary sm-btn curr-pointer"
                     onClick={() => {
                       setToEdit(true);
                       setAddressInfo(address);
@@ -76,7 +74,7 @@ const ProfilePage = () => {
                     Edit
                   </button>
                   <button
-                    className="btn btn-outline-secondary"
+                    className="sm-btn curr-pointer"
                     onClick={() =>
                       deleteAddress({ _id: address._id, token, dataDispatch })
                     }
@@ -88,6 +86,13 @@ const ProfilePage = () => {
             );
           })}
         </ul>
+
+        <button
+          className="btn btn-solid-danger mt-1"
+          onClick={handleLogoutClick}
+        >
+          Logout
+        </button>
       </div>
     </main>
   );

@@ -1,14 +1,28 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { defaultAddressState } from "../constants";
+import { useData } from "./";
 
 const AddressContext = createContext();
 const useAddress = () => useContext(AddressContext);
 
 const AddressProvider = ({ children }) => {
+  const {
+    dataState: { addresses },
+  } = useData();
+
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [toEdit, setToEdit] = useState(false);
   const [addressInfo, setAddressInfo] = useState(defaultAddressState);
+  const [deliveryAddress, setDeliveryAddress] = useState(
+    addresses?.length ? addresses[0] : null
+  );
+
+  useEffect(
+    () => setDeliveryAddress(addresses?.length ? addresses[0] : null),
+    [addresses]
+  );
+
   return (
     <AddressContext.Provider
       value={{
@@ -18,6 +32,8 @@ const AddressProvider = ({ children }) => {
         setShowAddressForm,
         toEdit,
         setToEdit,
+        deliveryAddress,
+        setDeliveryAddress,
       }}
     >
       {children}

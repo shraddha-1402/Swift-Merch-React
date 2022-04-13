@@ -7,3 +7,4 @@ export { FormInput } from "./FormInput";
 export { CartCard } from "./CartCard";
 export { CartPriceDetailCard } from "./CartPriceDetailCard";
 export { AddressFormModal } from "./AddressFormModal";
+export { ChangeAddressModal } from "./ChangeAddressModal";

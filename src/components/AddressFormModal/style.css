@@ -11,13 +11,17 @@
 
 .modal-box {
   position: relative;
-  max-width: 40rem;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   z-index: 3;
   padding: 1.5rem;
 }
 
 .input {
   padding: 0.5rem;
+}
+
+.mw-40r {
+  max-width: 40rem;
 }
