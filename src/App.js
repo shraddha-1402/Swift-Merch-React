@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Navbar } from "./components";
+import { Navbar, OrdersTab, ProfileTab } from "./components";
 import { routes } from "./constants";
 import { useAuth } from "./context";
 import {
@@ -34,7 +34,10 @@ function App() {
             token ? <ProfilePage /> : <Navigate to={routes.LOGIN_PAGE} />
           }
           path={routes.PROFILE_PAGE}
-        />
+        >
+          <Route element={<ProfileTab />} path={routes.PROFILE_PAGE} />
+          <Route element={<OrdersTab />} path={routes.ORDERS_PAGE} />
+        </Route>
         <Route
           element={
             token ? <WishlistPage /> : <Navigate to={routes.LOGIN_PAGE} />

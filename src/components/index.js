@@ -8,3 +8,6 @@ export { CartCard } from "./CartCard";
 export { CartPriceDetailCard } from "./CartPriceDetailCard";
 export { AddressFormModal } from "./AddressFormModal";
 export { ChangeAddressModal } from "./ChangeAddressModal";
+export { CouponModal } from "./CouponModal";
+export { ProfileTab } from "./ProfileTab";
+export { OrdersTab } from "./OrdersTab";

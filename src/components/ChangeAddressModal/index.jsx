@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import { GrClose } from "react-icons/gr";
 import PropTypes from "prop-types";
 import { useAddress, useData } from "../../context";
 
@@ -12,7 +12,7 @@ const ChangeAddressModal = ({ setShowChangeAddressModal }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-box gap-1 mw-28r pos-rel">
-        <FaTimes
+        <GrClose
           className="pos-abs card-badge-left curr-pointer"
           onClick={() => setShowChangeAddressModal(false)}
         />
