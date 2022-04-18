@@ -44,7 +44,8 @@ const routes = {
   CART_PAGE: "/cart-page",
   LOGIN_PAGE: "/login-page",
   SIGNUP_PAGE: "/signup-page",
-  PROFILE_PAGE: "profile-page",
+  PROFILE_PAGE: "/profile-page",
+  ORDERS_PAGE: "/profile-page/orders-page",
 };
 
 const actionType = {
@@ -60,6 +61,7 @@ const actionType = {
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
     SET_ADDRESSES: "SET_ADDRESSES",
+    SET_ORDERS: "SET_ORDERS",
   },
   FILTER_ACTIONS: {
     FILTER_BY_CATEGORIES: "FILTER_BY_CATEGORIES",
@@ -72,6 +74,24 @@ const actionType = {
     RESET_FILTER: "RESET_FILTER",
   },
 };
+
+const coupons = [
+  {
+    couponCode: "NEW_USER",
+    discount: 50,
+    description: "Save flat 5% off on your first purchase",
+  },
+  {
+    couponCode: "DIWALI_OFFER",
+    discount: 500,
+    description: "Save 500 Rs off on all your purchases above 3000",
+  },
+  {
+    couponCode: "MEGA_SAVING_OFFER",
+    discount: 2000,
+    description: "Save 2000 Rs on all your purchases above 6000",
+  },
+];
 
 const states = [
   "Andhra Pradesh",
@@ -114,5 +134,6 @@ export {
   filterByRating,
   sortingOptions,
   states,
+  coupons,
   dummyAddress,
 };

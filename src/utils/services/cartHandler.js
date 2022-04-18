@@ -70,4 +70,29 @@ const deleteFromCart = async ({ product, token, dataDispatch }) => {
   }
 };
 
-export { changeCartQuantity, getAllCartProducts, addToCart, deleteFromCart };
+const clearCart = async ({ token, dataDispatch }) => {
+  try {
+    const { data, status, statusText } = await axios.delete(
+      "/api/user/cart/all",
+      {
+        headers: { authorization: token },
+      }
+    );
+    if (status === 200)
+      dataDispatch({
+        type: actionType.DATA.SET_CART,
+        payload: { cart: data.cart },
+      });
+    else throw new Error(`${statusText} ${status}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  changeCartQuantity,
+  getAllCartProducts,
+  addToCart,
+  deleteFromCart,
+  clearCart,
+};

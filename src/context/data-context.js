@@ -9,6 +9,7 @@ const defaultDataState = {
   wishlist: [],
   cart: [],
   addresses: [],
+  orders: [],
 };
 
 const DataContext = createContext(defaultDataState);

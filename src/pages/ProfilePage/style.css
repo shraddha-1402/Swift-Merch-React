@@ -2,11 +2,46 @@
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
-  border: 1px solid var(--secondary-color);
 }
 
 .account-tabs {
   width: 100%;
   text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  font-size: 1em;
   padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 2px solid var(--secondary-color);
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.account-tabs-active {
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.order-card {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--secondary-color);
+}
+
+.order-item-card {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--secondary-color);
+}
+
+.lh-0-1 {
+  line-height: 1.3rem;
+}
+
+@media (max-width: 600px) {
+  .order-card {
+    font-size: 0.9em;
+  }
 }

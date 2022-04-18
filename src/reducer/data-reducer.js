@@ -3,7 +3,13 @@ import { actionType } from "../constants";
 const dataReducer = (state, action) => {
   const { type, payload } = action;
   const {
-    DATA: { UPDATE_PRODUCTS, SET_WISHLIST, SET_CART, SET_ADDRESSES },
+    DATA: {
+      UPDATE_PRODUCTS,
+      SET_WISHLIST,
+      SET_CART,
+      SET_ADDRESSES,
+      SET_ORDERS,
+    },
   } = actionType;
 
   switch (type) {
@@ -30,6 +36,11 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         addresses: payload.addresses,
+      };
+    case SET_ORDERS:
+      return {
+        ...state,
+        orders: payload.orders,
       };
 
     default:

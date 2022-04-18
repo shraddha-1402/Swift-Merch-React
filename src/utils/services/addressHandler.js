@@ -8,7 +8,6 @@ const addAddress = async ({ address, token, dataDispatch }) => {
       { address },
       { headers: { authorization: token } }
     );
-    console.log(data);
     if (status === 201)
       dataDispatch({
         type: actionType.DATA.SET_ADDRESSES,
