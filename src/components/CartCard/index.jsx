@@ -31,7 +31,7 @@ const CartCard = ({ product }) => {
       setDisableCartDelete(false);
       setDisableWishlist(false);
     };
-  });
+  }, []);
 
   const handleCartItemDeleteClick = async () => {
     setDisableCartDelete(true);
