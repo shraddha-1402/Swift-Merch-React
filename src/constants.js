@@ -4,12 +4,22 @@ const filterByRating = [4, 3, 2, 1];
 
 const sortingOptions = ["High_to_Low", "Low_to_High"];
 
-const defaultUserDataState = {
-  token: "",
-  firstName: "",
-  lastName: "",
-  cart: [],
-  wishlist: [],
+const defaultAddressState = {
+  name: "",
+  state: "",
+  street: "",
+  city: "",
+  zipCode: "",
+  phone: "",
+};
+
+const dummyAddress = {
+  name: "Shraddha",
+  state: "Maharashtra",
+  street: "408, Masoba Lane",
+  city: "Nagpur",
+  zipCode: "440018",
+  phone: "8806946440",
 };
 
 const defaultFilterState = {
@@ -49,6 +59,7 @@ const actionType = {
     SET_CART: "SET_CART",
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
+    SET_ADDRESSES: "SET_ADDRESSES",
   },
   FILTER_ACTIONS: {
     FILTER_BY_CATEGORIES: "FILTER_BY_CATEGORIES",
@@ -62,13 +73,46 @@ const actionType = {
   },
 };
 
+const states = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttarakhand",
+  "Uttar Pradesh",
+  "West Bengal",
+];
+
 export {
   routes,
   actionType,
-  defaultUserDataState,
+  defaultAddressState,
   defaultFilterState,
   filterByAlbum,
   filterByCategory,
   filterByRating,
   sortingOptions,
+  states,
+  dummyAddress,
 };

@@ -10,3 +10,4 @@ export {
   changeCartQuantity,
   deleteFromCart,
 } from "./cartHandler";
+export { addAddress, deleteAddress, editAddress } from "./addressHandler";

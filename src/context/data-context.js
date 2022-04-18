@@ -8,6 +8,7 @@ const defaultDataState = {
   products: [],
   wishlist: [],
   cart: [],
+  addresses: [],
 };
 
 const DataContext = createContext(defaultDataState);

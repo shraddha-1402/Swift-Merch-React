@@ -14,6 +14,7 @@ import {
   CartPage,
   SingleProduct,
 } from "./pages/";
+import { AddressFormModal } from "./components";
 
 function App() {
   const {
@@ -22,6 +23,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <AddressFormModal />
+
       <Routes>
         <Route element={<HomePage />} path={routes.HOME_PAGE} />
         <Route element={<ProductListingPage />} path={routes.PRODUCTS_PAGE} />

@@ -10,6 +10,10 @@
   border-bottom: 1px dashed var(--gray);
 }
 
+.disabled-btn {
+  cursor: default;
+}
+
 @media (max-width: 700px) {
   .cart-price-details {
     min-width: 12rem;
