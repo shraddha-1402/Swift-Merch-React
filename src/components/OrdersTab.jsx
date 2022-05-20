@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { routes } from "../constants";
 import { useAuth, useData } from "../context";
 import { getOrders } from "../utils/services";
+import { useDynamicTitle } from "../hooks";
 
 const OrdersTab = () => {
   const {
@@ -12,6 +13,7 @@ const OrdersTab = () => {
     dataState: { orders },
     dataDispatch,
   } = useData();
+  useDynamicTitle();
 
   useEffect(() => {
     getOrders({ token, dataDispatch });

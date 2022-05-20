@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { actionType } from "../../constants";
 
 const getAllWishlistProducts = async ({ token, dataDispatch }) => {
@@ -26,13 +27,15 @@ const addToWishlist = async ({ token, product, dataDispatch }) => {
       { product },
       { headers: { authorization: token } }
     );
-    if (status === 201)
+    if (status === 201) {
       dataDispatch({
         type: actionType.DATA.SET_WISHLIST,
         payload: { wishlist: data.wishlist },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Added to wishlist");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't add to wishlist");
     console.log(error);
   }
 };
@@ -43,13 +46,15 @@ const deleteFromWishlist = async ({ token, product, dataDispatch }) => {
       `/api/user/wishlist/${product._id}`,
       { headers: { authorization: token } }
     );
-    if (status === 200)
+    if (status === 200) {
       dataDispatch({
         type: actionType.DATA.SET_WISHLIST,
         payload: { wishlist: data.wishlist },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Removed from wishlist");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't remove from wishlist");
     console.log(error);
   }
 };

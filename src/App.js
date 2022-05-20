@@ -1,5 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./App.css";
 import { Navbar, OrdersTab, ProfileTab } from "./components";
 import { routes } from "./constants";
@@ -54,6 +56,13 @@ function App() {
           path={routes.CART_PAGE}
         />
       </Routes>
+      <ToastContainer
+        autoClose={1000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        position="bottom-right"
+        theme="colored"
+      />
     </div>
   );
 }

@@ -25,7 +25,6 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     if (pathname !== routes.PRODUCTS_PAGE) navigate(routes.PRODUCTS_PAGE);
-    console.log(e.target.value);
     filterDispatch({
       type: actionType.FILTER_ACTIONS.SEARCH_BY_NAME,
       payload: { searchText },

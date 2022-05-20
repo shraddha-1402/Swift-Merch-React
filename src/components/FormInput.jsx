@@ -14,7 +14,7 @@ const FormInput = ({
     <div className="pos-rel w-100p my-1-5">
       <label htmlFor="standard-input" className="input-label pos-abs">
         {label}
-        <span className="red-text">*</span>{" "}
+        <span className="red-text">*</span>
       </label>
       <input
         type={type}
@@ -24,7 +24,7 @@ const FormInput = ({
         name={name}
         value={value}
         minLength={minLength}
-        onChange={(event) => changeHandler(event)}
+        onChange={changeHandler}
       />
     </div>
   );

@@ -3,10 +3,12 @@ import { FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { actionType, routes } from "../constants";
 import { useAddress, useAuth, useData } from "../context";
+import { useDynamicTitle } from "../hooks";
 import { deleteAddress } from "../utils/services";
 
 const ProfileTab = () => {
   const navigate = useNavigate();
+  useDynamicTitle();
   const {
     authState: { userInfo, token },
     authDispatch,

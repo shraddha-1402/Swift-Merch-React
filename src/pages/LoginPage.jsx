@@ -9,9 +9,10 @@ import { routes } from "../constants";
 const LoginPage = () => {
   useDynamicTitle();
   const handleInputChange = (event) => {
-    setCredentials({
+    setCredentials((credentials) => ({
+      ...credentials,
       [event.target.name]: event.target.value,
-    });
+    }));
   };
 
   const [credentials, setCredentials] = useState({

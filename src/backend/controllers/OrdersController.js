@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate, requiresAuth } from "../utils/authUtils";
 
@@ -46,7 +47,8 @@ export const addItemToOrdersHandler = function (schema, request) {
     }
     const userOrders = schema.users.findBy({ _id: userId }).orders;
     const { order } = JSON.parse(request.requestBody);
-    userOrders.push({
+    userOrders.unshift({
+      _id: uuid(),
       ...order,
       createdAt: formatDate(),
       updatedAt: formatDate(),

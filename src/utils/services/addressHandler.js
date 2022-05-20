@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { actionType } from "../../constants";
 
 const addAddress = async ({ address, token, dataDispatch }) => {
@@ -8,13 +9,15 @@ const addAddress = async ({ address, token, dataDispatch }) => {
       { address },
       { headers: { authorization: token } }
     );
-    if (status === 201)
+    if (status === 201) {
       dataDispatch({
         type: actionType.DATA.SET_ADDRESSES,
         payload: { addresses: data.address },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Address added successfully");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't add address. Try Again!");
     console.log(error);
   }
 };
@@ -28,13 +31,15 @@ const deleteAddress = async ({ _id, token, dataDispatch }) => {
       }
     );
 
-    if (status === 200)
+    if (status === 200) {
       dataDispatch({
         type: actionType.DATA.SET_ADDRESSES,
         payload: { addresses: data.address },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Address deleted successfully");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't delete address. Try Again!");
     console.log(error);
   }
 };
@@ -49,13 +54,15 @@ const editAddress = async ({ address, token, dataDispatch }) => {
       }
     );
 
-    if (status === 200)
+    if (status === 200) {
       dataDispatch({
         type: actionType.DATA.SET_ADDRESSES,
         payload: { addresses: data.address },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Address edited successfully");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't edit address. Try Again!");
     console.log(error);
   }
 };

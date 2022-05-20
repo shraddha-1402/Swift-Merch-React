@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { actionType } from "../../constants";
 
 const getOrders = async ({ token, dataDispatch }) => {
@@ -24,13 +25,15 @@ const addOrders = async ({ order, token, dataDispatch }) => {
       { order },
       { headers: { authorization: token } }
     );
-    if (status === 201)
+    if (status === 201) {
       dataDispatch({
         type: actionType.DATA.SET_ORDERS,
         payload: { orders: data.orders },
       });
-    else throw new Error(`${statusText} ${status}`);
+      toast.success("Order placed successfully");
+    } else throw new Error(`${statusText} ${status}`);
   } catch (error) {
+    toast.error("Couldn't place order. Try again!");
     console.log(error);
   }
 };
